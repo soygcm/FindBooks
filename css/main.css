@@ -1,0 +1,42 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.gato{
+	background-color: brown;
+
+	display: block;
+	width: 30px;
+	height: 30px;
+}
+.gato.depie{
+	border: 1px solid black;
+	/*background-image: url("images/gato-depie.png");*/
+}
+.gato.sentado{
+	/*background-image: url("images/gato-sentado.png");*/
+}
+
+
+
+#logo>h1{
+	display: inline-block;
+	margin-left: auto;
+  margin-right: auto;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
