@@ -216,7 +216,7 @@ var BookCollection = Parse.Collection.extend({
         var self = this;
         self.reset();
         var options = options || {};
-        $.getJSON(this.url(),{q: this.query}, 
+        $.getJSON(this.url(),{q: this.query, maxResults: 5}, 
             function(response) {
                 self.fetchCallback(response, options); 
             },'jsonp');
@@ -228,7 +228,7 @@ var BookCollection = Parse.Collection.extend({
           success: function(results) {
 
             results = orderResults(results, self.query);
-
+            results.splice(5,results.length);
             self.add(results, {silent: true});
             self.successParse = true;
             self.success(options);
