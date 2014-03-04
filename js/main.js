@@ -9,7 +9,6 @@ var AppRouter = Parse.Router.extend({
 var Book = Parse.Object.extend("Book");
 var Offer = Parse.Object.extend("Offer");
 
-
 function makePattern(search_string) {
     search_string = search_string.replace(/([|()[{.+*?^$\\])/g,"\\$1");
     var words = search_string.split(/\s+/);
@@ -285,6 +284,7 @@ var BookCollection = Parse.Collection.extend({
     }
 });
 
+
 BookResult = Parse.View.extend({
     tagName: "li",
     className: "book-result",
@@ -310,12 +310,16 @@ BookResult = Parse.View.extend({
     }
 });
 
-SearchGBooks = Parse.View.extend({
+SearchOrAddBooks = Parse.View.extend({
     searchState: 0,
     events: {
-        'keyup input': 'logKey',
+        'keyup input.search': 'logKey',
+        'keyup input.title' : 'searchImages',
         'submit form.search': 'startSearch',
         'click button.erase': 'eraseResults',
+        'click button.eraseimage': 'eraseImage',
+        // 'click button.add': 'addBook',
+        'click img.imageresult':'selectImage',
     },
     countUp: 600,
     logKey: function(e) {
@@ -353,13 +357,77 @@ SearchGBooks = Parse.View.extend({
         var bookResult = new BookResult({model: book, parent: this});
         this.$ulResults.append(bookResult.render().el);
     },
+    searchImagesState: 0,
+    searchImages: function(e){
+            if (this.searchImagesState == 1) {
+                clearTimeout(this.countingImages);
+            }
+            // console.log('iniciando conteo hasta '+this.countUp);
+            self = this;
+            this.countingImages = setTimeout(function(){
+                console.log('buscando...')
+                self.startSearchImages();
+
+            },this.countUp);
+            this.searchImagesState = 1;
+    },
+    startSearchImages: function () {
+        self = this;
+
+        $.getJSON('https://www.googleapis.com/customsearch/v1', 
+            {
+                key: 'AIzaSyBG4Ajg_18bLW2a5Im0V8BrydLrKVCA0jE',
+                cx: '009812348751333104389:4ld9qfojt_y',
+                q: this.$inputTitle.val(),
+                searchType: 'image'
+            }, 
+            function(json, textStatus) {
+                self.$ulImageResults.empty();
+                _.each(json.items, function(image, key, list){
+                    $('<img/>',{
+                        src: image.image.thumbnailLink,
+                        class: 'imageresult',
+                        'data-link': image.link,
+                        'data-thumb': image.image.thumbnailLink
+                    }).appendTo($('<li>'))
+                    .appendTo(self.$ulImageResults);
+                });
+        });
+    },
+    selectImage:function (e) {
+        this.$ulImageResults.find('img').hide();
+        this.$ulImageResults.find(e.target).attr('src', this.$(e.target).data('link')).addClass('selected').show();
+    },
+    eraseImage: function () {
+        this.$ulImageResults.find('img').show();
+
+        this.$ulImageResults.find('img').each(function(index, el) {
+            $(el).attr('src', $(el).data('thumb'));
+        }).show();
+
+
+    },
+    createBook:function () {
+        newBook = new Book();
+        newBook.set('title', this.$inputTitle.val());
+        authorsArray = this.$inputAuthors.val().split(",");
+        newBook.set('authors', authorsArray);
+        thumbnails = new Object();
+        thumbnails.thumbnail = this.$('img.imageresult.selected').data('link');
+        thumbnails.smallThumbnail = this.$('img.imageresult.selected').data('thumb');
+        newBook.set('thumbnails', thumbnails);
+        return newBook;
+    },
     initialize: function(){
         this.render();
     },
     render: function(){
         this.bookCollection= new BookCollection();
-        this.$inputSearch= this.$('input');
-        this.$ulResults= this.$('ul');
+        this.$inputSearch= this.$('input.search');
+        this.$inputTitle= this.$('input.title');
+        this.$inputAuthors= this.$('input.authors');
+        this.$ulResults= this.$('ul.bookresults');
+        this.$ulImageResults= this.$('ul.imageresults');
         this.$formSearchOffer= this.$('form');
         this.$btnErase= this.$('button.erase');
     },
@@ -380,7 +448,9 @@ SearchGBooks = Parse.View.extend({
     }
 });
 
+AddBookView = Parse.View.extend({
 
+});
 
 FindBooksView = Parse.View.extend({
     el: "#findbooks",
@@ -395,8 +465,8 @@ FindBooksView = Parse.View.extend({
         this.$("#values ."+this.type).show();
     },
     render: function() {
-        this.findSearch =  new SearchGBooks({el:"#find>.search"});
-        this.offerSearch = new SearchGBooks({el:"#offer>.search"});
+        this.findSearch =  new SearchOrAddBooks({el:"#find>.search"});
+        this.offerSearch = new SearchOrAddBooks({el:"#offer>.search"});
         this.$("#values > div").hide();
         // this.$selectType= this.$('#type');
         this.$inputPrice= this.$('input.price');
@@ -407,7 +477,7 @@ FindBooksView = Parse.View.extend({
     },
     doneOffer: function(e){
         e.preventDefault();
-        book = this.offerSearch.selectedResult;
+        book = this.offerSearch.selectedResult || this.offerSearch.createBook();
         self = this;
         console.log(book);
         if (typeof(book.get('thumbnails'))!='undefined') {
@@ -457,7 +527,7 @@ FindBooksView = Parse.View.extend({
             {   appid: appId,
                 url: book.get('thumbnails').thumbnail,
                 apikey: rApiKey,
-                name: book.get('idGBook')
+                name: book.get('idGBook') || 'googleimages'
         },function(data, textStatus, xhr){
             success(data, textStatus, xhr);
         }, 'json').error(function( jqXHR, textStatus, errorThrown) {
