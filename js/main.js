@@ -537,9 +537,6 @@ FindBooksView = Parse.View.extend({
 });
 
 Parse.$ = jQuery;
-appId = "C4zgFUST9RGWSJ5scVpyB5G4co2gcMUpNPg0QpaI";
-jsKey = "C7Qy33Kz3SbWwNOoodEg6RiuIE7a4MlvoYo99kTZ";
-rApiKey = "pYnV60HdDrE8moVcRWnob0RBPzgllsOzDbspc5HU";
 Parse.initialize(appId, jsKey);
 
 var appView = new FindBooksView();
