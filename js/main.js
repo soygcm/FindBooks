@@ -539,13 +539,22 @@ FindBooksView = Parse.View.extend({
 Parse.$ = jQuery;
 Parse.initialize(appId, jsKey);
 
-var appView = new FindBooksView();
+var appView = new LoginView();
 var appRouter;
 
 $(document).ready(function() {
+    
     appView.render();
+
+    if (Parse.User.current()) {
+
+        appView.hide();
+
+    };
+
     appRouter = new AppRouter;
     Parse.history.start({pushState: true});
+    
 });
 
 
