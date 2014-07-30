@@ -82,9 +82,7 @@ LoginView = Parse.View.extend({
     },
 
     hide: function(){
-
     	this.$el.hide();
-
     }
 
 });
