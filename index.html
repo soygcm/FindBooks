@@ -80,14 +80,19 @@
     <script type="text/template" id="login-template">
       <div id="fondo-blur" class= "col-sm-6 col-md-5 col-lg-4">
         <div id="background-obscuro">
-        <img src="favicon-196x196.png" alt="Logo de FindBooks" width="80" height="80" class= "img-logo">
+        
+        <div id="logo">
+          <img src="favicon-196x196.png" alt="Logo de FindBooks" width="80" height="80" class= "pull-left">
+          <h1 >Find Books</h1>
+        </div>
 
           <form role="form" class="form-horizontal">
             <div class="alert alert-danger" role="alert"></div>
 
             <div class="form-group">
-              <label for="exampleInputEmail1" class="col-sm-2 control-label">Email</label>
-              <div class="col-sm-10">
+              <label for="exampleInputEmail1" class="col-xs-2 control-label">Email</label>
+              
+              <div class="col-xs-10">
                 <input type="email" class="form-control email" placeholder="Enter email">
               </div>
 
@@ -95,15 +100,15 @@
 
 
             <div class="form-group">
-              <label for="exampleInputPassword1" class="col-sm-3 control-label">Password</label>
-              <div class="col-sm-9">
+              <label for="exampleInputPassword1" class="col-xs-3 control-label">Password</label>
+              <div class="col-xs-9">
                 <input type="password" class="form-control password" placeholder="Password">
               </div>
             </div>
 
 
-            <button type="submit" class="btn btn-success btn-block login">Submit</button>
-            <button type="button" class="btn btn-success btn-block signup">Registrarme</button>
+            <button type="submit" class="btn btn-success btn-block login">Log In</button>
+            <button type="button" class="btn btn-success btn-block signup">Sign Up</button>
           </form>
 
         </div>

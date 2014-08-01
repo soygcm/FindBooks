@@ -14,23 +14,44 @@ body{
 }
 
 label{
-	font-weight: 400;
+	font-weight: 300;
+	font-size: 16px;
 }
+input {
+	font-weight: 300;
+	font-size: 16px;
+}
+#logo {
+	margin: 10px 62px 0px 0px;
+	height: 110px;
+}
+#logo>img {
+	margin: 22px;
+	margin-top: 0px;
+	margin-left: 0px;
+}
+#logo>h1 {
+	display: block;
+	margin-top: 12px;
+	width: 224px;
 
+}
 
 #login{
 
 	color: #fff;
 }
 
-#logo>h1{
-	display: inline-block;
-	margin-left: auto;
-  	margin-right: auto;
+#login input {
+	border-radius: 0px;
+	background-color: transparent;
+	border-color: #8A7E74;
+	color: #FFFFFF;
+	font-size: 16px;
 }
-.img-logo {
-	margin: 30px;
-	margin-bottom: 60px;
+
+#login label {
+	color: #B8B1AB;
 }
 
 #fondo-blur {   
