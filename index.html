@@ -26,20 +26,13 @@
   <meta name="msapplication-TileColor" content="#ffc40d">
   <meta name="msapplication-TileImage" content="mstile-144x144.png">
 
-  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <style>
-  body {
-    padding-top: 50px;
-    padding-bottom: 20px;
-  }
-  </style>
+  
+  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> --> 
 
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-
-  <!-- <link rel="stylesheet" href="css/bootstrap-theme.min.css"> -->
-  <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/main.css">
   <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,300,700,100,400italic' rel='stylesheet' type='text/css'>
 </head>
 <body>
   
@@ -85,23 +78,36 @@
 
 
     <script type="text/template" id="login-template">
+      <div id="fondo-blur" class= "col-sm-6 col-md-5 col-lg-4">
+        <div id="background-obscuro">
+        <img src="favicon-196x196.png" alt="Logo de FindBooks" width="80" height="80" class= "img-logo">
 
-<form role="form">
-  
-  <div class="alert alert-danger" role="alert"></div>
+          <form role="form" class="form-horizontal">
+            <div class="alert alert-danger" role="alert"></div>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control email" placeholder="Enter email">
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control password" placeholder="Password">
-  </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1" class="col-sm-2 control-label">Email</label>
+              <div class="col-sm-10">
+                <input type="email" class="form-control email" placeholder="Enter email">
+              </div>
 
-  <button type="submit" class="btn btn-primary login">Submit</button>
-  <button type="button" class="btn btn-default signup">Registrarme</button>
-</form>
+            </div>
+
+
+            <div class="form-group">
+              <label for="exampleInputPassword1" class="col-sm-3 control-label">Password</label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control password" placeholder="Password">
+              </div>
+            </div>
+
+
+            <button type="submit" class="btn btn-success btn-block login">Submit</button>
+            <button type="button" class="btn btn-success btn-block signup">Registrarme</button>
+          </form>
+
+        </div>
+      </div>
 
     </script>
 
@@ -149,132 +155,6 @@
     <h3><%= title %></h3>
     <h4><%= authors %></h4>
     </a>
-    </script>
-
-    <script type="text/template" id="">
-
-    <div id="logo" class="jumbotron">
-        <h1 class="text-center" ><img src="apple-touch-icon-152x152.png" width="70" height="70" alt="" class="pull-left">
-          Find Books
-        </h1>
-      </div>
-
-      <div id="mail">
-        <form action="" class="form-horizontal" role="mail">
-
-          <div class="form-group">
-            <label for="input-email" class="col-sm-2 control-label">Email</label>
-            <div class="col-sm-10">
-              <input type="email" class="form-control email" id="input-email" placeholder="Email">
-            </div>
-          </div>
-
-        </form>
-
-      </div>
-
-
-          <div class="">
-            <div id="find" class="col-xs-6 side">
-
-              <div class="search">
-                <form class="navbar-form search" role="search">
-                  <div class="form-group">
-                    <input type="text" class="form-control search" placeholder="Search">
-                  </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul id="" class="bookresults">
-                </ul>
-                <button type="button" class="btn btn-default erase hidden">delete/erase</button>
-              </div>
-
-            </div>
-            <div id="offer" class="col-xs-6 side">
-
-            
-              <div class="search">
-                <form class="navbar-form search" role="search">
-                  <div class="form-group">
-                    <input type="text" class="form-control search" placeholder="Search">
-                  </div>
-                  <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-                <ul id="" class="bookresults">
-                </ul>
-                <button type="button" class="btn btn-default erase hidden">delete/erase</button>
-              
-                <div class="addnew">
-                  <div class="form-horizontal">
-                    <div class="form-group">
-                      <label for="name" class="col-sm-2 control-label">Titulo</label>
-                      <div class="col-sm-10">
-                        <input type="text" name="name" id="name" class="form-control title">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="author" class="col-sm-2 control-label">Autor</label>
-                      <div class="col-sm-10">
-                        <input type="text" name="author" id="author" class="form-control authors"></div>
-                    </div>
-                  </div>
-                  <ul class="imageresults">
-                  </ul>
-                  <button type="button" class="btn btn-default eraseimage">Erase Image</button>
-                  <!-- <button type="button" class="btn btn-default add">Add Book</button> -->
-                </div>
-
-              </div>
-
-              <div class="form">
-
-                <div id="type" class="btn-group btn-group-justified">
-                    <a href="#" type="button" data-value="sell" class="btn btn-default">Vender</a>
-                    <a href="#" type="button" data-value="donate" class="btn btn-default">Donar</a>
-                    <a href="#" type="button" data-value="lend"  class="btn btn-default">Prestar</a>
-                    <a href="#" type="button" data-value="rent" class="btn btn-default">Alquilar</a>
-                </div>
-
-                <form id="values" class="form-horizontal" role="form">
-
-                  <div class="form-group sell">
-                    <label for="inputEmail3" class="col-sm-2 control-label">price</label>
-                    <div class="col-sm-10">
-                      <input type="number" class="form-control price">
-                    </div>
-                  </div>
-
-                  <div class="form-group lend rent">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Tiempo Máximo</label>
-                    <div class="col-sm-7">
-                      <input type="number" class="form-control max-time" placeholder="" value="1">
-                    </div>
-                    <div class="col-sm-3">
-                      <select  class="form-control time-type">
-                        <option value="day">Dia/s</option>
-                        <option value="month">Mes/es</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="form-group rent">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Precio por hora</label>
-                    <div class="col-sm-2">
-                      <select class="form-control ">
-                        <option value="day">¢</option>
-                        <option value="week">$</option>
-                      </select>
-                    </div>
-                    <div class="col-sm-8">
-                      <input type="number" class="form-control price-time" placeholder="" value="1">
-                    </div>
-                  </div>
-                  <button class="btn done btn-default">Enviar</button>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
-
     </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>

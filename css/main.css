@@ -6,28 +6,53 @@
 
 body{
 
-	background: url(../img/fondo1.jpg) no-repeat;
+	background: url(../img/fondo1.jpg) no-repeat fixed;
 	background-size: 100% auto;
+    padding-bottom: 20px;
+/*	font-family: 'Roboto', sans-serif	;
+	font-weight: 300; */
+}
 
+label{
+	font-weight: 400;
+}
+
+
+#login{
+
+	color: #fff;
+}
+
+#logo>h1{
+	display: inline-block;
+	margin-left: auto;
+  	margin-right: auto;
+}
+.img-logo {
+	margin: 30px;
+	margin-bottom: 60px;
+}
+
+#fondo-blur {   
+	background: url(../img/fondoBlur.jpg) no-repeat fixed;   
+	background-size: 100% auto;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#background-obscuro {
+	background-color: rgba(18, 6, 0, 0.55);
+	padding-top: 40px;
+    padding-bottom: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .btn{
 
 	text-transform: uppercase;
-
+	border-radius: 0;
 }
-
-
-#logo>h1{
-	display: inline-block;
-	margin-left: auto;
-  margin-right: auto;
-}
-
-
-
-
-
 
 
 
