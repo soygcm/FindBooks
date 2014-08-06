@@ -9,8 +9,14 @@ body{
 	background: url(../img/fondo1.jpg) no-repeat fixed;
 	background-size: 100% auto;
     padding-bottom: 20px;
-/*	font-family: 'Roboto', sans-serif	;
-	font-weight: 300; */
+	font-family: 'Roboto', sans-serif	;
+	font-weight: 300; 
+}
+body.login{
+
+	background-image: none;
+	background-color: #fffffa;
+
 }
 
 label{

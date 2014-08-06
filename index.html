@@ -26,13 +26,15 @@
   <meta name="msapplication-TileColor" content="#ffc40d">
   <meta name="msapplication-TileImage" content="mstile-144x144.png">
 
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  
-  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> --> 
-
-    <link rel="stylesheet" href="css/main.css">
-  <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,300,700,100,400italic' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> --> 
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/main.css">
+  
+  <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
 <body>
   
@@ -59,13 +61,46 @@
 
   <div id="app">
 
+
+
+<nav id="mainnav" class="navbar navbar-default" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header pull-left">
+      <a class="navbar-brand" href="#">FindBooks</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling --> 
+      <ul class="nav navbar-nav pull-right">
+        <li class="dropdown">
+
+          <a href="#" class="dropdown-toggle text-uppercase" data-toggle="dropdown">
+            <span class="hidden-xs">Libreria Internacional </span>
+            <i class="fa fa-user fa-fw"></i><span class="caret"></span>
+          </a>
+
+          <ul class="dropdown-menu" role="menu">
+            <li><a class="edit-profile" href="#">Edit Profile</a></li>
+            <li class="divider"></li>
+            <li><a class="logout" href="#">Log Out</a></li>
+          </ul>
+
+        </li>
+      </ul>
+
+  </div>
+</nav>
+
+
     <div id="thebooks" class="container" >
+
+      
 
     </div>
 
     <div id="admin" class="container">
   
-
+      
       
     </div>
 
@@ -118,37 +153,49 @@
 
 
     <script type="text/template" id="admin-template" >
+
       
-
+      <div class="panel panel-default">
       <table class="table" >
+
         <tr>
           <th>
-            Titulo
+            Titulo / Autores
           </th>
-
           <th>
-            Autores
+            Precio
+          </th>
+          <th>
+            Existencias
+          </th>
+          <th>
+            
           </th>
         </tr>
-        <tr>
-          <td>
-            Titulo
-          </td>
 
+        <tr>
+          <td class="row">
+            <h2 class="pull-left" >
+                <img width="30" height="40" >
+            </h2>
+            <h2 class="title">Don Quijote</h2>
+            <h4 class="authors">Miguel de Cervantes, Gabriel Castañaza</h4>
+          </th>
           <td>
-            Autores
+            $4,000
+          </td>
+          <td>
+            20
+          </td>
+          <td>
+            <a href="#"><i class="fa fa-pencil fa-fw"></i></a>
+            <a href="#"><i class="fa fa-trash-o fa-fw"></i></a>
           </td>
         </tr>
-        <tr>
-          <td>
-            Titulo
-          </td>
 
-          <td>
-            Autores
-          </td>
-        </tr>
       </table>
+
+      </div>
     
 
     </script>
@@ -175,6 +222,7 @@
  -->
     <script src="js/keys.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/nav.js"></script>
     <script src="js/admin.js"></script>
     <script src="js/app.js"></script>
     <script src="js/main.js"></script>

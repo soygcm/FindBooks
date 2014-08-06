@@ -4,6 +4,9 @@ AppView = Parse.View.extend({
 
 	login: new LoginView(),
 	admin: new AdminView(),
+	mainnav: new MainNavView(),
+
+	loginClass: 'login',
 
 	render: function () {
 
@@ -15,6 +18,7 @@ AppView = Parse.View.extend({
 
         	this.login.hide();
 
+        	this.$el.parent().addClass(this.loginClass);
 
     	}else{
 

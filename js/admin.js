@@ -12,6 +12,10 @@ AdminView = Parse.View.extend({
 
     hide: function(){
     	this.$el.hide();
+    },
+    
+    show: function(){
+    	this.$el.show();
     }
 
 });
