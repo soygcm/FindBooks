@@ -3,8 +3,8 @@ LoginView = Parse.View.extend({
 	el: "#login",
 
 	events:{
-        "click .login":"logIn",
-        "click .signup": "signUp"
+        "click .login"  : "logIn",
+        "click .signup" : "signUp",
     },
 
 	template:_.template($("#login-template").html()),
@@ -37,8 +37,8 @@ LoginView = Parse.View.extend({
 	        success: function(user) {
 	          // self.undelegateEvents();
 	          // appView.notLoading();
-	          self.hide();
-	          // appView.show();
+	          // self.hide();
+	          appView.showAdmin();
 	        },
 	        error: function(user, error) {
 			  // appView.notLoading();
