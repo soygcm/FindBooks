@@ -5,30 +5,42 @@ AppView = Parse.View.extend({
 	login: new LoginView(),
 	admin: new AdminView(),
 	mainnav: new MainNavView(),
-
-	loginClass: 'login',
+	
+	loggedClass: 'logged',
 
 	render: function () {
 
-		this.login.render();
+		this.$body = this.$el.parent();
 
-		this.admin.render();
-		
-		if (Parse.User.current()) {
+		if ( Parse.User.current() ) {
 
-        	this.login.hide();
-
-        	this.$el.parent().addClass(this.loginClass);
+			this.$body.addClass(this.loggedClass);
+			this.showAdmin();
 
     	}else{
 
-    		this.admin.hide();
-
-
+    		this.showLogIn();
+ 
     	}
 
+	},
 
+	showAdmin: function () {
+
+		this.$body.addClass(this.loggedClass);
+
+		this.mainnav.$el.show();
+		this.login.$el.html('');
+
+		this.admin.render();
 
 	},
+
+	showLogIn: function () {
+		this.$body.removeClass(this.loggedClass);
+		this.login.render();
+		this.admin.$el.html('');
+		this.mainnav.$el.hide();
+	}
 
 });
