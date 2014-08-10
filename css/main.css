@@ -31,7 +31,6 @@ input {
 
 #add-book{
 	position: relative;
-	z-index: 10510;
 }
 #add-book .results{
 	position: absolute;
@@ -83,6 +82,10 @@ input {
     padding-bottom: 40px;
     padding-left: 20px;
     padding-right: 20px;
+}
+
+#admin-panel {
+	margin-top: 15px;
 }
 
 .btn{
