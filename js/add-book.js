@@ -1,7 +1,8 @@
-// AddBooksView = 
-
 AddBooksView = Parse.View.extend({
     searchState: 0,
+
+    // el: "#add-book",
+
     events: {
         'keyup input.search': 'logKey',
         'keyup input.title' : 'searchImages',
@@ -11,7 +12,11 @@ AddBooksView = Parse.View.extend({
         // 'click button.add': 'addBook',
         'click img.imageresult':'selectImage',
     },
+
     countUp: 600,
+
+    template:_.template($("#add-book-template").html()),
+
     logKey: function(e) {
         // console.log(e.keyCode);
         if (this.$inputSearch.val() != "" && this.$inputSearch.val() != this.bookCollection.query) {
@@ -109,9 +114,11 @@ AddBooksView = Parse.View.extend({
         return newBook;
     },
     initialize: function(){
-        this.render();
+        // this.render();
     },
     render: function(){
+        this.$el.html(this.template());
+
         this.bookCollection= new BookCollection();
         this.$inputSearch= this.$('input.search');
         this.$inputTitle= this.$('input.title');
@@ -120,6 +127,8 @@ AddBooksView = Parse.View.extend({
         this.$ulImageResults= this.$('ul.imageresults');
         this.$formSearchOffer= this.$('form');
         this.$btnErase= this.$('button.erase');
+
+        return this;
     },
     setBookResult: function(book){
         // console.log(book.get('title'));
