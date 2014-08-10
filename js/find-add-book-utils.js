@@ -110,7 +110,7 @@ function orderResults(books, query){
     C_SPACE = 3;
     C_ACCENTS = 2;
     C_CASE = 1;
-    console.log(query, makePattern(query));
+    // console.log(query, makePattern(query));
     queryWords = query.match(makePattern(query)); 
     _.each(books, function(book, key, list){
         book.weight = 0;
@@ -130,7 +130,7 @@ function orderResults(books, query){
         ontext = (found/wordsLargerOne.length);
         book.weight += ontext*C_ONTEXT;
         //ORDER-----------------
-        console.log(book.get('title'), find);
+        // console.log(book.get('title'), find);
         // wordFindAnt = "";
         order = 0;
         _.each(find, function(wordFind, key, list){

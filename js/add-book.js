@@ -1,16 +1,16 @@
 AddBooksView = Parse.View.extend({
     searchState: 0,
 
-    // el: "#add-book",
+    // el:"#add-book",
 
     events: {
-        'keyup input.search': 'logKey',
-        'keyup input.title' : 'searchImages',
-        'submit form.search': 'startSearch',
-        'click button.erase': 'eraseResults',
-        'click button.eraseimage': 'eraseImage',
-        // 'click button.add': 'addBook',
-        'click img.imageresult':'selectImage',
+        'keyup input.title-isbn'    : 'logKey',
+        // 'keyup input.title'         : 'searchImages',
+        // 'submit form.search'        : 'startSearch',
+        // 'click button.erase'        : 'eraseResults',
+        // 'click button.eraseimage'   : 'eraseImage',
+        'click button.add'          : 'addBook',
+        // 'click img.imageresult'     :'selectImage',
     },
 
     countUp: 600,
@@ -32,7 +32,15 @@ AddBooksView = Parse.View.extend({
             this.searchState = 1;
         }
     },
+
+    addBook: function(){
+        console.log('addbook');
+    },
+
     startSearch: function(e){
+
+        this.$results.show();
+
         e.preventDefault();
         self = this;
         if (this.$inputSearch.val() != "" && this.$inputSearch.val() != this.bookCollection.query) {
@@ -49,8 +57,9 @@ AddBooksView = Parse.View.extend({
         }
     },
     addOneResult: function(book){
-        var bookResult = new BookResult({model: book, parent: this});
-        this.$ulResults.append(bookResult.render().el);
+        console.log(book.get('title'));
+        // var bookResult = new BookResult({model: book, parent: this});
+        // this.$ulResults.append(bookResult.render().el);
     },
     searchImagesState: 0,
     searchImages: function(e){
@@ -120,10 +129,13 @@ AddBooksView = Parse.View.extend({
         this.$el.html(this.template());
 
         this.bookCollection= new BookCollection();
-        this.$inputSearch= this.$('input.search');
+
+        this.$inputSearch= this.$('input.title-isbn');
+        this.$results= this.$('.results');
+        this.$ulResults= this.$('.results ul');
+
         this.$inputTitle= this.$('input.title');
         this.$inputAuthors= this.$('input.authors');
-        this.$ulResults= this.$('ul.bookresults');
         this.$ulImageResults= this.$('ul.imageresults');
         this.$formSearchOffer= this.$('form');
         this.$btnErase= this.$('button.erase');

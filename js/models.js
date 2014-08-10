@@ -41,6 +41,7 @@ var BookCollection = Parse.Collection.extend({
 
             this.trigger('change');
             options.success(this);
+            
         }
         
     },
