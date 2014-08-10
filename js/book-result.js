@@ -1,6 +1,6 @@
 BookResult = Parse.View.extend({
     tagName: "li",
-    className: "book-result",
+    className: "list-group-item",
     events:{
         "click":"setBookResult"
     },

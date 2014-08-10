@@ -48,9 +48,6 @@ var BookCollection = Parse.Collection.extend({
     fetchCallback: function(response, options) {
         var self = this;
         // self.reset();
-
-
-
         _.each(response.items, function(book, i) {
             newBook = new Book();
             if (typeof(book.volumeInfo.title) != "undefined"){

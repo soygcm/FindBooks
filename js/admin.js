@@ -16,10 +16,6 @@ AdminView = Parse.View.extend({
 
         this.addBooks.setElement(this.$("#add-book")).render();
 
-        // this.$addBook = this.$("#add-book");
-
-        // this.$addBook.append(this.addBooks.render().el);
-
         return this;
     },
 

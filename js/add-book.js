@@ -47,7 +47,7 @@ AddBooksView = Parse.View.extend({
             this.bookCollection.query = this.$inputSearch.val();
             this.bookCollection.fetch({
                 success:function(collection){
-                    self.$ulResults.empty();
+                    self.$results.empty();
                     console.log("Busqueda terminada");
                     _.each(collection.models, function(book, i) {
                         self.addOneResult(book);
@@ -58,8 +58,8 @@ AddBooksView = Parse.View.extend({
     },
     addOneResult: function(book){
         console.log(book.get('title'));
-        // var bookResult = new BookResult({model: book, parent: this});
-        // this.$ulResults.append(bookResult.render().el);
+        var bookResult = new BookResult({model: book, parent: this});
+        this.$results.append(bookResult.render().el);
     },
     searchImagesState: 0,
     searchImages: function(e){
@@ -132,7 +132,8 @@ AddBooksView = Parse.View.extend({
 
         this.$inputSearch= this.$('input.title-isbn');
         this.$results= this.$('.results');
-        this.$ulResults= this.$('.results ul');
+
+        this.$results.hide();
 
         this.$inputTitle= this.$('input.title');
         this.$inputAuthors= this.$('input.authors');
@@ -146,14 +147,14 @@ AddBooksView = Parse.View.extend({
         // console.log(book.get('title'));
         this.selectedResult = book;
         this.$formSearchOffer.hide();
-        this.$ulResults.hide();
+        this.$results.hide();
         this.$btnErase.removeClass('hidden').show();
         var bookResult = new BookResult({model: book, parent: this, id: 'book-result', tagName: 'div'});
         this.$el.append(bookResult.render().el);
     },
     eraseResults: function(){
         this.$formSearchOffer.show();
-        this.$ulResults.show();
+        this.$results.show();
         this.$btnErase.hide();
         this.$('#book-result').remove();
     }
