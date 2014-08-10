@@ -19,6 +19,7 @@ body.logged{
 
 }
 
+
 label{
 	font-weight: 300;
 	font-size: 16px;
@@ -27,6 +28,17 @@ input {
 	font-weight: 300;
 	font-size: 16px;
 }
+
+#add-book{
+	position: relative;
+	z-index: 10510;
+
+}
+#add-book .modal{
+	position: absolute;
+	overflow: visible;
+}
+
 #logo {
 	margin: 24px 62px 12px 0px;
 	height: 110px;
@@ -47,7 +59,6 @@ input {
 
 	color: #fff;
 }
-
 #login input {
 	border-radius: 0px;
 	background-color: transparent;
@@ -55,7 +66,6 @@ input {
 	color: #FFFFFF;
 	font-size: 16px;
 }
-
 #login label {
 	color: #B8B1AB;
 }
