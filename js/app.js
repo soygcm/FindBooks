@@ -41,6 +41,11 @@ AppView = Parse.View.extend({
 		this.login.render();
 		this.admin.$el.html('');
 		this.mainnav.$el.hide();
+	},
+
+	editBook: function(id) {
+		appRouter.navigate('edit/'+id);
+		console.log('edit book: '+id);
 	}
 
 });
