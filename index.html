@@ -175,25 +175,71 @@
       </div>
 
       
-      <div class="panel panel-default">
-        <div id="add-book" class="panel-heading" >
-          <div class="input-group">
-            <span class="input-group-addon">Agregar libro:</span>
-            <input type="text" class="form-control" data-toggle="modal" data-target="#add-book-results" placeholder="Nombre/ISBN">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button">
-                  <i class="glyphicon glyphicon-plus"></i>
-                </button>
-              </span>
-          </div>
-        <div>
-        
-        </div>
+    <div class="panel panel-default">
 
+      <div id="add-book" class="panel  panel-default" >
+
+          <div  class="panel-heading" >
+            
+            <div class="input-group">
+              <span class="input-group-addon">Agregar libro:</span>
+              <input type="text" class="form-control" placeholder="Nombre/ISBN">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button">
+                    <i class="glyphicon glyphicon-plus"></i>
+                  </button>
+                </span>
+            </div>
+
+          </div>
+
+
+        <div class="panel-body results col-xs-12 hidden">
+
+          <ul class="list-group">
+            
+            <li class="list-group-item">
+                  <h3>The lean Startup<small>: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses.<em> Por Eric Ries</em></small></h3>
+                  
+                  <div class="row">
+                    <div class="col-sm-6">
+                      ISBN-10: 0307887898
+                       ||  
+                      ISBN-13: 978-0307887894
+                    </div>
+                    <div class="col-sm-6 text-right">
+                    April 2, 2012
+                      ||  
+                    Pasta dura
+                    </div>
+                  </div>
+                  
+            </li>
+            
+            <li class="list-group-item">
+                  <h3>The lean Startup<small>: How Today's Entrepreneurs Use Continuous Innovation to Create Radically Successful Businesses.<em> Por Eric Ries</em></small></h3>
+                  
+                  <div class="row">
+                    <div class="col-sm-6">
+                      ISBN-10: 0307887898
+                       ||  
+                      ISBN-13: 978-0307887894
+                    </div>
+                    <div class="col-sm-6 text-right">
+                    April 2, 2012
+                      ||  
+                    Pasta dura
+                    </div>
+                  </div>
+            </li>
+
+          </ul>
+
+        </div>
       </div>
 
 
-      <table class="table" >
+      <table class="table table-striped" >
         <tr>
           <th>
             Titulo / Autores
@@ -209,6 +255,25 @@
           </th>
         </tr>
 
+        <tr>
+          <td class="row">
+            <h2 class="pull-left" >
+                <img width="30" height="40" >
+            </h2>
+            <h2 class="title">Nombre del Libro</h2>
+            <h4 class="authors">Miguel de Cervantes</h4>
+          </th>
+          <td>
+            $4,000
+          </td>
+          <td>
+            20
+          </td>
+          <td>
+            <a href="#"><i class="fa fa-pencil fa-fw"></i></a>
+            <a href="#"><i class="fa fa-trash-o fa-fw"></i></a>
+          </td>
+        </tr>
         <tr>
           <td class="row">
             <h2 class="pull-left" >

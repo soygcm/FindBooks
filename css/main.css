@@ -32,11 +32,11 @@ input {
 #add-book{
 	position: relative;
 	z-index: 10510;
-
 }
-#add-book .modal{
+#add-book .results{
 	position: absolute;
 	overflow: visible;
+	background-color: white;
 }
 
 #logo {
