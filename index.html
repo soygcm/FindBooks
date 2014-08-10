@@ -33,9 +33,39 @@
   <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="css/main.css">
+  
   <script type="bower_components/platform/platform.js"></script>
   <link rel="import"  href="bower_components/polymer/polymer.html">
+  
+  <link rel="import" href="bower_components/core-doc-viewer/core-doc-viewer.html">
+  <link rel="import" href="bower_components/paper-button/paper-button.html">
+  <link rel="import" href="bower_components/paper-progress/paper-progress.html">
   <script src="js/vendor/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+
+ <style>    
+      #core_doc_viewer {
+        position: auto;
+        width: 600px;
+        height: 300px;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+        box-shadow: rgba(0, 0, 0, 0.0980392) 0px 2px 4px, rgba(0, 0, 0, 0.0980392) 0px 0px 3px;
+        left: 410px;
+        top: 150px;
+        background-color: rgb(255, 255, 255);
+      }
+      #paper_button {
+        background-color: rgb(198, 117, 28);
+        position: auto;
+      }
+      #paper_progress {
+        background-color: blue;
+
+      }
+    </style>
+
 </head>
 <body unresolved touch-action="auto">
   
@@ -101,24 +131,6 @@
 
     <div id="admin" class="container">
   
-      <polymer-element name="upload">
-
-      <template>
-   <style>    
-      #paper_button {
-        left: 460px;
-        top: 350px;
-        position: absolute;
-        background-color: rgb(176, 101, 17);
-      }
-    </style>
-    <paper-button label="Paper Button" id="paper_button"></paper-button>
-  </template>
-
-      <script>Polymer('tag-name');</script>
-
-    </polymer-element>
-
       
     </div>
 
@@ -218,6 +230,24 @@
 
     </script>
 
+
+<polymer-element>
+
+  <core-doc-viewer id="core_doc_viewer" layout vertical>
+      <paper-button label="Upload your CSV File" id="paper_button"></paper-button>
+      <paper-progress id="paper_progress"></paper-progress>
+  </core-doc-viewer>
+ 
+
+  <script>
+
+    Polymer('my-element', {
+      
+    });
+
+  </script>
+
+</polymer-element>
 
     <script type="text/template" id="book-result-template">
     <a>
