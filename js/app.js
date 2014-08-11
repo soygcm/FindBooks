@@ -14,7 +14,6 @@ AppView = Parse.View.extend({
 
 		if ( Parse.User.current() ) {
 
-			this.$body.addClass(this.loggedClass);
 			this.showAdmin();
 
     	}else{
