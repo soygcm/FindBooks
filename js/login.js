@@ -38,7 +38,6 @@ LoginView = Parse.View.extend({
 	          // self.undelegateEvents();
 	          // appView.notLoading();
 	          // self.hide();
-	          appRouter.navigate('/admin');
 	          appView.showAdmin();
 	        },
 	        error: function(user, error) {

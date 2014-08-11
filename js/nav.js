@@ -7,8 +7,14 @@ MainNavView = Parse.View.extend({
 		"click .logout" : "logOut"
 
 	}, 
+
+	template:_.template($("#nav-template").html()),
 	
 	render: function () {
+
+		this.$el.html( this.template( Parse.User.current().toJSON() ) );
+
+		return this;
 
 	},
 

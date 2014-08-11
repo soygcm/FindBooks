@@ -25,21 +25,17 @@ AppView = Parse.View.extend({
 	},
 
 	showAdmin: function () {
-
+		this.mainnav.render();
 		this.$body.addClass(this.loggedClass);
-
-		this.mainnav.$el.show();
 		this.login.$el.html('');
-
 		this.admin.render();
-
 	},
 
 	showLogIn: function () {
 		this.$body.removeClass(this.loggedClass);
 		this.login.render();
 		this.admin.$el.html('');
-		this.mainnav.$el.hide();
+		this.mainnav.$el.html('');
 	},
 
 	editBook: function(id) {
