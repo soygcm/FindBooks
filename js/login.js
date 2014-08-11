@@ -67,7 +67,7 @@ LoginView = Parse.View.extend({
 	      Parse.User.signUp(username, password, null, {
 	        success: function(user) {
 	          // self.undelegateEvents();
-	          self.hide();
+	          appView.showAdmin();
 	        },
 	        error: function(user, error) {
 	          $error.html(error.message).show();
