@@ -6,7 +6,7 @@ AddBooksView = Parse.View.extend({
     events: {
         'keyup input.title-isbn'    : 'logKey',
         // 'keyup input.title'         : 'searchImages',
-        // 'submit form.search'        : 'startSearch',
+        'submit form.add'        : 'startSearch',
         // 'click button.erase'        : 'eraseResults',
         // 'click button.eraseimage'   : 'eraseImage',
         'click button.add'          : 'addBook',
@@ -31,6 +31,9 @@ AddBooksView = Parse.View.extend({
             },this.countUp);
             this.searchState = 1;
         }
+        else if(this.$inputSearch.val() == ""){
+            this.$results.hide();
+        }
     },
 
     addBook: function(){
@@ -38,9 +41,6 @@ AddBooksView = Parse.View.extend({
     },
 
     startSearch: function(e){
-
-        this.$results.show();
-
         e.preventDefault();
         self = this;
         if (this.$inputSearch.val() != "" && this.$inputSearch.val() != this.bookCollection.query) {
@@ -48,12 +48,16 @@ AddBooksView = Parse.View.extend({
             this.bookCollection.fetch({
                 success:function(collection){
                     self.$results.empty();
+                    self.$results.show();
                     console.log("Busqueda terminada");
                     _.each(collection.models, function(book, i) {
                         self.addOneResult(book);
                     });
                 }
             });
+        }
+        else if(this.$inputSearch.val() == ""){
+            this.$results.hide();
         }
     },
     addOneResult: function(book){
@@ -145,12 +149,18 @@ AddBooksView = Parse.View.extend({
     },
     setBookResult: function(book){
         // console.log(book.get('title'));
+
+        /*
+
         this.selectedResult = book;
         this.$formSearchOffer.hide();
         this.$results.hide();
         this.$btnErase.removeClass('hidden').show();
         var bookResult = new BookResult({model: book, parent: this, id: 'book-result', tagName: 'div'});
         this.$el.append(bookResult.render().el);
+
+        */
+
     },
     eraseResults: function(){
         this.$formSearchOffer.show();

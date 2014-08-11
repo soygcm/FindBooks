@@ -4,7 +4,7 @@ var Offer = Parse.Object.extend("Offer");
 var BookCollection = Parse.Collection.extend({
     model: Book,
     query: '',
-    successParse: false,
+    successParse: true,
     successGoogle: false,
     initialize: function() {
         _.bindAll(this, 'url', 'fetch', 'fetchCallback');
@@ -13,12 +13,15 @@ var BookCollection = Parse.Collection.extend({
         var self = this;
         self.reset();
         var options = options || {};
+
+        //Get Google
         $.getJSON(this.url(),{q: this.query, maxResults: 5}, 
             function(response) {
                 self.fetchCallback(response, options); 
             },'jsonp');
 
-        console.log(this.query, makePattern(this.query));
+        //Get Google 
+        /*console.log(this.query, makePattern(this.query));
         var query = new Parse.Query(Book);
         query.matches("title", makePattern(this.query));
         query.find({
@@ -34,6 +37,8 @@ var BookCollection = Parse.Collection.extend({
             alert("Error: " + error.code + " " + error.message);
           }
         });
+        */
+
     },
     success: function(options){
 
@@ -55,6 +60,8 @@ var BookCollection = Parse.Collection.extend({
             }
             if (typeof(book.volumeInfo.subtitle) != "undefined"){
                 newBook.set('subtitle', book.volumeInfo.subtitle);
+            }else{
+                newBook.set('subtitle', '');
             }
             if (typeof(book.volumeInfo.authors) != "undefined"){
                 newBook.set('authors', book.volumeInfo.authors);
@@ -65,7 +72,7 @@ var BookCollection = Parse.Collection.extend({
             if (typeof(book.id) != "undefined"){
                 newBook.set('idGBook',  book.id);
             }
-            self.add(newBook,{ silent: true }); 
+            self.add(newBook,{ silent: false }); 
         });
         
         // options.success(self);

@@ -146,9 +146,18 @@
     <script type="text/template" id="book-result-template" >
     <!-- <li class="list-group-item"> -->
 
-          <img src='<%= thumbnails.thumbnail %>' alt="">
+          <img src='<%= thumbnails.thumbnail %>' alt=""  class="pull-left" width="30" height="40">
 
-          <h3><%= title %><small> subtitle<em> por <%= authors %></em></small></h3>
+          <div class="media-body">
+              <h3><%= title %> 
+                <small> 
+                  <%= subtitle %>. 
+                  <em>por <%= authors %></em>
+                </small>
+              </h3>
+          </div>
+
+          
           
           <div class="row">
             <div class="col-sm-6">
@@ -168,7 +177,7 @@
 
     <script type="text/template" id="add-book-template" >
       
-          <div  class="panel-body" >
+          <form role="form"  class="panel-body add" >
             
             <div class="input-group">
               <span class="input-group-addon">Agregar libro:</span>
@@ -180,7 +189,7 @@
                 </span>
             </div>
 
-          </div>
+          </form>
 
 
         <ul class="list-group panel-body results col-xs-12">
@@ -277,12 +286,16 @@
         </tr>
 
         <tr>
-          <td class="row">
-            <h2 class="pull-left" >
-                <img width="30" height="40" >
-            </h2>
-            <h2 class="title">Nombre del Libro</h2>
-            <h4 class="authors">Miguel de Cervantes</h4>
+          <td class="row media">
+
+            <div class="pull-left" >
+                <img width="30" height="40" class="media-object" >
+            </div>
+            <div class="media-body">
+              <h2 class="title">Nombre del Libro</h2>
+              <h4 class="authors">Miguel de Cervantes</h4>
+            </div>
+
           </th>
           <td>
             $4,000
@@ -295,13 +308,42 @@
             <a href="#"><i class="fa fa-trash-o fa-fw"></i></a>
           </td>
         </tr>
+        
         <tr>
-          <td class="row">
-            <h2 class="pull-left" >
-                <img width="30" height="40" >
-            </h2>
-            <h2 class="title">Nombre del Libro</h2>
-            <h4 class="authors">Miguel de Cervantes</h4>
+          <td class="row media">
+
+            <div class="pull-left" >
+                <img width="30" height="40" class="media-object" >
+            </div>
+            <div class="media-body">
+              <h2 class="title">Nombre del Libro</h2>
+              <h4 class="authors">Miguel de Cervantes</h4>
+            </div>
+
+          </th>
+          <td>
+            $4,000
+          </td>
+          <td>
+            20
+          </td>
+          <td>
+            <a href="#"><i class="fa fa-pencil fa-fw"></i></a>
+            <a href="#"><i class="fa fa-trash-o fa-fw"></i></a>
+          </td>
+        </tr>
+
+        <tr>
+          <td class="row media">
+
+            <div class="pull-left" >
+                <img width="30" height="40" class="media-object" >
+            </div>
+            <div class="media-body">
+              <h2 class="title">Nombre del Libro</h2>
+              <h4 class="authors">Miguel de Cervantes</h4>
+            </div>
+
           </th>
           <td>
             $4,000
@@ -325,7 +367,7 @@
 
     <script type="text/template" id="book-result-template">
     <a>
-    <img src='<%= thumbnails.thumbnail %>' alt="">
+    <img src='<%= thumbnails.thumbnail %>' alt="" width="30" height="40" >
     <h3><%= title %></h3>
     <h4><%= authors %></h4>
     </a>
