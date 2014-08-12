@@ -6,7 +6,7 @@ AddBooksView = Parse.View.extend({
     events: {
         'keyup input.title-isbn'    : 'logKey',
         // 'keyup input.title'         : 'searchImages',
-        'submit form.add'        : 'startSearch',
+        'submit form.add'           : 'startSearch',
         // 'click button.erase'        : 'eraseResults',
         // 'click button.eraseimage'   : 'eraseImage',
         'click button.add'          : 'addBook',
@@ -132,26 +132,32 @@ AddBooksView = Parse.View.extend({
     render: function(){
         this.$el.html(this.template());
 
-        this.bookCollection= new BookCollection();
+        this.bookCollection = new BookCollection();
 
-        this.$inputSearch= this.$('input.title-isbn');
-        this.$results= this.$('.results');
+        this.$inputSearch = this.$('input.title-isbn');
+        this.$results = this.$('.results');
 
         this.$results.hide();
 
-        this.$inputTitle= this.$('input.title');
-        this.$inputAuthors= this.$('input.authors');
-        this.$ulImageResults= this.$('ul.imageresults');
-        this.$formSearchOffer= this.$('form');
-        this.$btnErase= this.$('button.erase');
+        this.$inputTitle = this.$('input.title');
+        this.$inputAuthors = this.$('input.authors');
+        this.$ulImageResults = this.$('ul.imageresults');
+        this.$formSearchOffer = this.$('form');
+        this.$btnErase = this.$('button.erase');
 
         return this;
+    },
+
+
+    empty: function(){
+        this.$inputSearch.val('');
+        this.$results.hide();
     },
     setBookResult: function(book){
         // console.log(book.get('title'));
 
         /*
-
+        
         this.selectedResult = book;
         this.$formSearchOffer.hide();
         this.$results.hide();

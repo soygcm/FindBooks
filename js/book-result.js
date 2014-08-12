@@ -4,7 +4,9 @@ BookResult = Parse.View.extend({
     events:{
         "click":"setBookResult"
     },
+
     template:_.template($("#book-result-template").html()),
+    
     render: function() {
         var modelJson = this.model.toJSON();
         modelJson.authors = modelJson.authors || [];
@@ -17,8 +19,12 @@ BookResult = Parse.View.extend({
         return this;
     },
     setBookResult: function(){
-        if(this.id != "book-result"){
-            this.options.parent.setBookResult(this.model);
-        }
+        
+        appView.showNewBook(this.model);
+        this.options.parent.empty();
+
+        // if(this.id != "book-result"){
+            // this.options.parent.setBookResult(this.model);
+        // }
     }
 });

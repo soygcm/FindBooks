@@ -29,7 +29,7 @@ AdminView = Parse.View.extend({
 
     editBook: function(){
 
-        appView.editBook('7g884as8f8R');
+        appView.showEditBook('7g884as8f8R');
 
     }
 

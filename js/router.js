@@ -1,13 +1,19 @@
 var AppRouter = Parse.Router.extend({
     routes:{
-        // '':'home',
+        '':'home',
         // 'admin/p:page': 'admin',
         'edit/:id' : 'edit',
+        "new" : 'newBook',
+    },
+
+    home: function(){
+        appView.home();
     },
 
     edit: function(id){
-
     	appView.editBook(id);
-
+    },
+    newBook : function(){
+        appView.showNewBook(new Book());
     }
 });

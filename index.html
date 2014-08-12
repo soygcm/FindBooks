@@ -61,11 +61,11 @@
 
   <div id="app">
 
-
     <nav id="mainnav" class="navbar navbar-default" role="navigation"></nav>
 
-
     <div id="thebooks" class="container" ></div>
+
+    <div id="edit-book"></div>
 
     <div id="admin" class="container"></div>
 
@@ -74,7 +74,7 @@
   </div>
 
   
-    <script type="text/template" id="nav-template">
+<script type="text/template" id="nav-template">
 
 
   <div class="container-fluid">
@@ -101,10 +101,82 @@
         </li>
       </ul>
 
-    </script>
+</script>
 
 
-    <script type="text/template" id="login-template">
+<script type="text/template" id="edit-book-template">
+      
+      
+      <div class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog ">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+              </button>
+              <h4 class="modal-title">Add new book</h4>
+            </div>
+
+            <form role="form"  class="modal-body" >
+            
+            <div class="input-group">
+              <span class="input-group-addon">Titulo:</span>
+              <input type="text" class="title form-control" value="<%= book.title %>">
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-addon">Subtitulo:</span>
+              <input type="text" class="subtitle form-control" value="<%= book.subtitle %>">
+            </div>
+
+            <div class="input-group">
+              <span class="input-group-addon">Autores:</span>
+              <input type="text" class="authors form-control" value="<%= book.authors %>">
+            </div>
+
+
+            <div class="input-group input-group-lg">
+              <label class="input-group-addon" for="offer-price">Precio:</label>
+              <input id="offer-price" type="text" class="price form-control" value="<%= offer.price %>">
+              <span class="input-group-addon">
+                <select >
+                  <option>$</option>
+                  <option>¥</option>
+                  <option>£</option>
+                  <option>€</option>
+                </select>
+              </span>
+            </div>
+
+            <div class="input-group input-group-lg">
+              <span class="input-group-addon">Existencias:</span>
+              <input type="text" class="stocks form-control" value="<%= offer.stocks %>">
+              
+            </div>
+
+
+
+
+          </form>
+
+
+            <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="save btn btn-success">Guardar</button>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+
+</script>
+
+
+<script type="text/template" id="login-template">
       <div id="fondo-blur" class= "col-sm-6 col-md-5 col-lg-4">
         <div id="background-obscuro">
         
@@ -141,9 +213,9 @@
         </div>
       </div>
 
-    </script>
+</script>
 
-    <script type="text/template" id="book-result-template" >
+<script type="text/template" id="book-result-template" >
     <!-- <li class="list-group-item"> -->
 
           <img src='<%= thumbnails.thumbnail %>' alt=""  class="pull-left" width="30" height="40">
@@ -173,9 +245,9 @@
           </div>
           
     <!-- </li> -->
-    </script>
+</script>
 
-    <script type="text/template" id="add-book-template" >
+<script type="text/template" id="add-book-template" >
       
           <form role="form"  class="panel-body add" >
             
@@ -198,9 +270,9 @@
 
         </div>
 
-    </script>
+</script>
 
-    <script type="text/template" id="admin-template" >
+<script type="text/template" id="admin-template" >
 
       <div class="row" >
         
@@ -362,16 +434,16 @@
       </div>
     
 
-    </script>
+</script>
 
 
-    <script type="text/template" id="book-result-template">
+<script type="text/template" id="book-result-template">
     <a>
-    <img src='<%= thumbnails.thumbnail %>' alt="" width="30" height="40" >
-    <h3><%= title %></h3>
-    <h4><%= authors %></h4>
+      <img src='<%= thumbnails.thumbnail %>' alt="" width="30" height="40" >
+      <h3><%= title %></h3>
+      <h4><%= authors %></h4>
     </a>
-    </script>
+</script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
@@ -381,9 +453,9 @@
     <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.16.min.js"></script>
 
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-<!-- 
-    <script src="js/vendor/bootstrap.min.js"></script>
- -->
+
+    <script src="js/vendor/jquery.number.min.js"></script>
+      
     
     <script src="js/find-add-book-utils.js"></script>
 
@@ -393,6 +465,7 @@
     <script src="js/router.js"></script>
 
     <script src="js/book-result.js"></script>
+    <script src="js/edit-book.js"></script>
     <script src="js/login.js"></script>
     <script src="js/nav.js"></script>
     <script src="js/add-book.js"></script>
