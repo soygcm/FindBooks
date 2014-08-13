@@ -34,8 +34,12 @@ input {
 }
 #add-book .results{
 	position: absolute;
+	top:3em;
 	overflow: visible;
-	background-color: white;
+	/*background-color: white;*/
+}
+#add-book .list-group-item:last-child{
+	margin-bottom: 3em;
 }
 
 #logo {

@@ -20,8 +20,8 @@ BookResult = Parse.View.extend({
     },
     setBookResult: function(){
         
-        appView.showNewBook(this.model);
         this.options.parent.empty();
+        appView.showNewBook(this.model);
 
         // if(this.id != "book-result"){
             // this.options.parent.setBookResult(this.model);

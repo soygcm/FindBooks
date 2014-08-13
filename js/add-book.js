@@ -32,7 +32,8 @@ AddBooksView = Parse.View.extend({
             this.searchState = 1;
         }
         else if(this.$inputSearch.val() == ""){
-            this.$results.hide();
+            this.$results.modal('hide');
+            this.$el.css('z-index', 20);
         }
     },
 
@@ -48,7 +49,11 @@ AddBooksView = Parse.View.extend({
             this.bookCollection.fetch({
                 success:function(collection){
                     self.$results.empty();
-                    self.$results.show();
+
+                    self.$results.modal('show');
+                    appView.$body.removeClass('modal-open');
+
+                    self.$el.css('z-index', 6000);
                     console.log("Busqueda terminada");
                     _.each(collection.models, function(book, i) {
                         self.addOneResult(book);
@@ -57,7 +62,8 @@ AddBooksView = Parse.View.extend({
             });
         }
         else if(this.$inputSearch.val() == ""){
-            this.$results.hide();
+            this.$results.modal('hide');
+            this.$el.css('z-index', 20);
         }
     },
     addOneResult: function(book){
@@ -152,7 +158,11 @@ AddBooksView = Parse.View.extend({
     empty: function(){
         this.$inputSearch.val('');
         this.$results.hide();
+        this.$results.modal('hide');
+        this.$el.css('z-index', 20);
     },
+
+
     setBookResult: function(book){
         // console.log(book.get('title'));
 
