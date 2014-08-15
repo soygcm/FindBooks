@@ -69,6 +69,8 @@
 
     <div id="admin" class="container"></div>
 
+    <div id="import-db" class="container"></div>
+
     <div id="login" class="container"></div>
 
   </div>
@@ -456,6 +458,35 @@
 </script>
 
 
+<script type="text/template" id="import-db-template">
+  
+  <div id="" class="panel panel-default">
+
+      <table class="table table-striped" >
+        <tr>
+          <th width="60%">
+            Titulo / Autores
+          </th>
+          <th>
+            Precio
+          </th>
+          <th>
+            Existencias
+          </th>
+          <th>
+            
+          </th>
+        </tr>
+
+
+
+      </table>
+
+  </div>
+
+</script>
+
+
 <script type="text/template" id="book-result-template">
     <a>
       <img src='<%= thumbnails.smallThumbnail %>' alt="" width="30" height="40" >
@@ -490,6 +521,7 @@
     <script src="js/nav.js"></script>
     <script src="js/add-book.js"></script>
     <script src="js/admin.js"></script>
+    <script src="js/import-db.js"></script>
 
     <script src="js/app.js"></script>
     <script src="js/main.js"></script>

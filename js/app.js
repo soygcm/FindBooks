@@ -38,10 +38,27 @@ AppView = Parse.View.extend({
 		}
 	},
 
+	showImportDB: function() {
+
+		appRouter.navigate('import');
+
+		this.admin.$el.hide();
+
+
+		if (!this.importDB || this.importDB.$el.html() == '') {
+			this.importDB = new ImportDBView();
+			this.admin.$el.hide();
+			this.importDB.render();
+		}else{
+			this.importDB.$el.show();
+		}
+	},
+
 	showLogIn: function () {
 		this.$body.removeClass(this.loggedClass);
 		this.login.render();
 		this.admin.$el.html('');
+		this.importDB.$el.html('');
 		this.mainnav.$el.html('').hide();
 	},
 
@@ -60,10 +77,15 @@ AppView = Parse.View.extend({
 	home: function(){
 		this.navHome();
 
-		if (this.editBook) {
+		this.admin.$el.show();
 
+		if (this.editBook) {
 			this.editBook.hide();
-		};
+		}
+
+		if (this.importDB) {
+			this.importDB.$el.hide();
+		}
 
 	},
 
@@ -77,7 +99,7 @@ AppView = Parse.View.extend({
 			this.editBook.render();
 		}
 
-		console.log('new '+model.get('idGBook'));
+		console.log('new ' + model.get('idGBook'));
 	}
 
 });

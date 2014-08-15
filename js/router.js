@@ -3,7 +3,8 @@ var AppRouter = Parse.Router.extend({
         '':'home',
         // 'admin/p:page': 'admin',
         'edit/:id' : 'edit',
-        "new" : 'newBook',
+        'new' : 'newBook',
+        'import' : 'importDB',
     },
 
     home: function(){
@@ -15,5 +16,8 @@ var AppRouter = Parse.Router.extend({
     },
     newBook : function(){
         appView.showNewBook(new Book());
+    },
+    importDB : function(){
+        appView.showImportDB();
     }
 });
