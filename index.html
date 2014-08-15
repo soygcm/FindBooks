@@ -272,6 +272,33 @@
 
 </script>
 
+<script type="text/template" id="book-tr-template">
+  
+        <td class="row media">
+            <div class="pull-left" >
+                <img src="<%= book.thumbnails.smallThumbnail %>" width="30" height="40" class="media-object" >
+            </div>
+            <div class="media-body">
+              <h3 class="title"><%= book.title %> <small><%= book.subtitle %> </small> </h3>
+              <h4 class="authors"><%= book.authors %></h4>
+            </div>
+        </th>
+
+        <td>
+          $ <% print($.number(offer.price, 2, ',', '.' ));  %>
+        </td>
+
+        <td>
+          <%= offer.stocks %>
+        </td>
+
+        <td>
+            <a href="#"><i class="fa fa-pencil fa-fw"></i></a>
+            <a href="#"><i class="fa fa-trash-o fa-fw"></i></a>
+        </td>
+
+</script>
+
 <script type="text/template" id="admin-template" >
 
       <div class="row" >
@@ -405,7 +432,7 @@
 
       <table class="table table-striped" >
         <tr>
-          <th>
+          <th width="60%">
             Titulo / Autores
           </th>
           <th>
@@ -419,77 +446,7 @@
           </th>
         </tr>
 
-        <tr>
-          <td class="row media">
 
-            <div class="pull-left" >
-                <img width="30" height="40" class="media-object" >
-            </div>
-            <div class="media-body">
-              <h2 class="title">Nombre del Libro</h2>
-              <h4 class="authors">Miguel de Cervantes</h4>
-            </div>
-
-          </th>
-          <td>
-            $4,000
-          </td>
-          <td>
-            20
-          </td>
-          <td>
-            <a href="#"><i class="fa fa-pencil fa-fw"></i></a>
-            <a href="#"><i class="fa fa-trash-o fa-fw"></i></a>
-          </td>
-        </tr>
-        
-        <tr>
-          <td class="row media">
-
-            <div class="pull-left" >
-                <img width="30" height="40" class="media-object" >
-            </div>
-            <div class="media-body">
-              <h2 class="title">Nombre del Libro</h2>
-              <h4 class="authors">Miguel de Cervantes</h4>
-            </div>
-
-          </th>
-          <td>
-            $4,000
-          </td>
-          <td>
-            20
-          </td>
-          <td>
-            <a href="#"><i class="fa fa-pencil fa-fw"></i></a>
-            <a href="#"><i class="fa fa-trash-o fa-fw"></i></a>
-          </td>
-        </tr>
-
-        <tr>
-          <td class="row media">
-
-            <div class="pull-left" >
-                <img width="30" height="40" class="media-object" >
-            </div>
-            <div class="media-body">
-              <h2 class="title">Nombre del Libro</h2>
-              <h4 class="authors">Miguel de Cervantes</h4>
-            </div>
-
-          </th>
-          <td>
-            $4,000
-          </td>
-          <td>
-            20
-          </td>
-          <td>
-            <a href="#"><i class="fa fa-pencil fa-fw"></i></a>
-            <a href="#"><i class="fa fa-trash-o fa-fw"></i></a>
-          </td>
-        </tr>
 
       </table>
 
@@ -501,7 +458,7 @@
 
 <script type="text/template" id="book-result-template">
     <a>
-      <img src='<%= thumbnails.thumbnail %>' alt="" width="30" height="40" >
+      <img src='<%= thumbnails.smallThumbnail %>' alt="" width="30" height="40" >
       <h3><%= title %></h3>
       <h4><%= authors %></h4>
     </a>
@@ -527,6 +484,7 @@
     <script src="js/router.js"></script>
 
     <script src="js/book-result.js"></script>
+    <script src="js/book-tr.js"></script>
     <script src="js/edit-book.js"></script>
     <script src="js/login.js"></script>
     <script src="js/nav.js"></script>

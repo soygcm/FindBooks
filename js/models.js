@@ -1,6 +1,8 @@
 var Book = Parse.Object.extend("Book");
 var Offer = Parse.Object.extend("Offer");
 
+var OfferList = Parse.Collection.extend({model:Offer});
+
 var BookCollection = Parse.Collection.extend({
     model: Book,
     query: '',

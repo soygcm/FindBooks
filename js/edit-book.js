@@ -47,7 +47,7 @@ EditBookView = Parse.View.extend({
         var datos =  {
             'book'  :  bookJson,
             'offer' : ''
-         };
+        };
 
         this.$el.html(this.template(datos));
 
