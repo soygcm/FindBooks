@@ -1,13 +1,30 @@
 EditBookView = Parse.View.extend({
     el: "#edit-book",
-    events:{
-        "click #type a"             : "selectType",
-        "hide.bs.modal .modal"      : "onHideModal",
-        "hidden.bs.modal .modal"    : "onHiddenModal",        
-        "click .save"               : 'saveOffer'
+    events:{        
+        "hidden.bs.modal .modal"    : "onHiddenModal",  
+        "click .save"               : 'saveOffer',
+        'keyup input'               : 'changeInfo'
     },
 
     template: _.template($("#edit-book-template").html()),
+
+    offerEdited: false,
+
+    bookEdited: false,
+
+    changeInfo: function (e) {
+        
+        var idParent = this.$(e.target).parents('section').attr('id');
+        console.log(idParent);
+
+        if (!this.bookEdited && idParent == 'book-form') {
+            this.bookEdited == true;
+        }
+        else if (!this.offerEdited && idParent == 'offer-form') {
+            this.offerEdited = true;
+        }
+
+    },
 
     selectType: function(e){
         e.preventDefault();
@@ -16,14 +33,17 @@ EditBookView = Parse.View.extend({
         this.$("#values ."+this.type).show();
     },
 
-    onHideModal: function(){
-        
-    },
-
     onHiddenModal: function(){
+
+        this.offerEdited = false;
+        this.bookEdited = false;
+
+        delete this.model;
+
         this.delegateEvents();
         appView.navHome();
         this.$el.html('');
+        delete this.book;
     },
 
     hide: function(){
@@ -34,7 +54,13 @@ EditBookView = Parse.View.extend({
 
     render: function() {
 
+        var offerJson = '';
         var bookJson = '';
+
+        if (this.model) {
+            offerJson = this.model.toJSON();
+            bookJson = this.model.get('book').toJSON();
+        }
 
         if (this.book) {
             bookJson = this.book.toJSON();
@@ -46,7 +72,7 @@ EditBookView = Parse.View.extend({
 
         var datos =  {
             'book'  :  bookJson,
-            'offer' : ''
+            'offer' : offerJson
         };
 
         this.$el.html(this.template(datos));
@@ -65,37 +91,58 @@ EditBookView = Parse.View.extend({
     },
 
     saveOffer: function(e){
-        e.preventDefault();
-        this.$('button').attr("disabled", true);
-        // book = this.offerSearch.selectedResult || this.offerSearch.createBook();
-        self = this;
-        console.log(this.book);
 
-        /*
-        if (typeof(book.get('thumbnails'))!='undefined') {
-            //Si no tiene miniatura es porque no viene desde Google?
-            
-            this.uploadImageBook(book, function(data, textStatus, xhr) {
-                console.log(data);
-                if(data.url != null){
-                    book.set('picture', {"name": data.name, 'url': data.url, "__type": "File"});
-                    book.save(null, {success: self.saveBookSuccess, error: self.saveError});
-                }
-            }); 
-        }else{
+
+        // Es una oferta nueva: se crea un libro y se agrega a una oferta.
+
+        if (this.book) {
+
+            e.preventDefault();
+            this.$('button').attr("disabled", true);
+            // book = this.offerSearch.selectedResult || this.offerSearch.createBook();
+            self = this;
+            console.log(this.book);
+
+            this.book.save(null, {success: self.saveBookSuccess, error: self.saveError});
         }
-        */
 
-        this.book.save(null, {success: self.saveBookSuccess, error: self.saveError});
-    
+        // Solo hay que actualizar la oferta
+        else if(this.offerEdited && !this.bookEdited){
+
+            this.updateOffer();
+
+        }
+
+        // Hay que crear un nuevo libro
     },
 
     saveBookSuccess: function(book){
         self.$('.modal-footer').css('background-color', 'lightgreen');
-        self.saveOfferParse(book);
+        self.saveNewOfferParse(book);
+    },
+
+    updateOffer: function () {
+
+        self = this;
+        
+        var offer = this.model;
+        offer.set('price', Number( this.$price.val() ) );
+        offer.set('stocks', Number( this.$stocks.val() ) );
+
+        offer.save(null, {success: function(offer){
+            console.log(self.callerView);
+            self.hide();
+
+            if (self.callerView) {
+                self.callerView.render();
+            }
+
+        }, error: self.saveError});
+
     },
     
-    saveOfferParse: function(book){
+    saveNewOfferParse: function(book){
+
         // e.preventDefault();
         var offer = new Offer();
         offer.set('price', Number(this.$price.val()));
@@ -105,6 +152,13 @@ EditBookView = Parse.View.extend({
         offer.setACL(new Parse.ACL(Parse.User.current()));
 
         self = this;
+        
+        offer.save(null, {success: function(offer){
+            // console.log(offer);
+            self.hide();
+            appView.admin.offerList.add(offer);
+        }, error: self.saveError});
+
         /*Si hubieran otros tipos de oferta
         offer.set('type', this.type);
         offer.set('email', this.$inputEmail.val());
@@ -124,10 +178,7 @@ EditBookView = Parse.View.extend({
             break;
         }
         */
-        offer.save(null, {success: function(offer){
-            console.log(offer);
-            self.hide();
-        }, error: self.saveError});
+
     },
 
     renderOld: function() {

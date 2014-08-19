@@ -10,9 +10,9 @@ $(document).ready(function() {
 
     appRouter = new AppRouter;
 
-    Parse.history.start();
+    // Parse.history.start();
 
-    // Parse.history.start({pushState: true});
+    Parse.history.start({pushState: true});
     // esta funcion es cool y hay que usarla si o si
     
 });

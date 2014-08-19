@@ -58,16 +58,9 @@ AppView = Parse.View.extend({
 		this.$body.removeClass(this.loggedClass);
 		this.login.render();
 		this.admin.$el.html('');
-		this.importDB.$el.html('');
+		
+		// this.importDB.$el.html('');
 		this.mainnav.$el.html('').hide();
-	},
-
-	showEditBook: function(id) {
-
-		appRouter.navigate('edit/'+id);
-
-		console.log('edit book: '+id);
-
 	},
 
 	navHome: function(){
@@ -93,13 +86,39 @@ AppView = Parse.View.extend({
 
 		appRouter.navigate('new');
 
-		if (!this.editBook || this.editBook.$el.html() == '') {
+		if (!this.editBook){
 			this.editBook = new EditBookView();
+		}
+		if (this.editBook.$el.html() == '') {
 			this.editBook.book = model;
 			this.editBook.render();
 		}
 
 		console.log('new ' + model.get('idGBook'));
-	}
+	},
+
+	showEditBook: function(bookTr) {
+
+		appRouter.navigate('edit/'+bookTr.model.id);
+
+		if (!this.editBook){
+			this.editBook = new EditBookView();
+		}
+		if(this.editBook.$el.html() == '') {
+			this.editBook.model = bookTr.model;
+			this.editBook.callerView = bookTr;
+			this.editBook.render();
+		}
+
+		// console.log('new ' + model.get('idGBook'));
+	},
+
+	// showEditBook: function(id) {
+
+	// 	appRouter.navigate('edit/'+id);
+
+	// 	console.log('edit book: '+id);
+
+	// }
 
 });

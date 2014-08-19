@@ -2,10 +2,16 @@ BookTr = Parse.View.extend({
     tagName: "tr",
 
     events:{
-
+        "click":"editBook"
     },
 
     template:_.template($("#book-tr-template").html()),
+
+    initialize: function () {
+
+        // this.model.on('change', this.render);
+        
+    },
     
     render: function() {
 
@@ -25,24 +31,21 @@ BookTr = Parse.View.extend({
 
         // modelJson.authors = modelJson.authors || [];
         // modelJson.thumbnails = modelJson.thumbnails || [];
-
         // modelJson.authors = modelJson.authors.join(", ");
 
         this.$el.html(this.template(datos));
 
-        // if(typeof(modelJson.objectId) != 'undefined'){
-        //     this.$el.css('background-color', 'tomato');
-        // }
-
         return this;
     },
-    setBookResult: function(){
+    editBook: function(){
         
-        this.options.parent.empty();
-        appView.showNewBook(this.model);
+        appView.showEditBook(this);
+        
+        // this.options.parent.empty();
+        // appView.showNewBook(this.model);
 
-        // if(this.id != "book-result"){
-            // this.options.parent.setBookResult(this.model);
-        // }
+        // // if(this.id != "book-result"){
+        //     // this.options.parent.setBookResult(this.model);
+        // // }
     }
 });

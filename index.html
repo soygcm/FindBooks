@@ -122,43 +122,49 @@
             </div>
 
             <form role="form"  class="modal-body" >
+
+            <section id="book-form">
             
-            <div class="input-group">
-              <span class="input-group-addon">Titulo:</span>
-              <input type="text" class="title form-control" value="<%= book.title %>">
-            </div>
+                <div class="input-group">
+                  <span class="input-group-addon">Titulo:</span>
+                  <input type="text" class="title form-control" value="<%= book.title %>">
+                </div>
 
-            <div class="input-group">
-              <span class="input-group-addon">Subtitulo:</span>
-              <input type="text" class="subtitle form-control" value="<%= book.subtitle %>">
-            </div>
+                <div class="input-group">
+                  <span class="input-group-addon">Subtitulo:</span>
+                  <input type="text" class="subtitle form-control" value="<%= book.subtitle %>">
+                </div>
 
-            <div class="input-group">
-              <span class="input-group-addon">Autores:</span>
-              <input type="text" class="authors form-control" value="<%= book.authors %>">
-            </div>
+                <div class="input-group">
+                  <span class="input-group-addon">Autores:</span>
+                  <input type="text" class="authors form-control" value="<%= book.authors %>">
+                </div>
 
-
-            <div class="input-group input-group-lg">
-              <label class="input-group-addon" for="offer-price">Precio:</label>
-              <input id="offer-price" type="text" class="price form-control" value="<%= offer.price %>">
-              <span class="input-group-addon">
-                <select >
-                  <option>$</option>
-                  <option>¥</option>
-                  <option>£</option>
-                  <option>€</option>
-                </select>
-              </span>
-            </div>
-
-            <div class="input-group input-group-lg">
-              <span class="input-group-addon">Existencias:</span>
-              <input type="text" class="stocks form-control" value="<%= offer.stocks %>">
-              
-            </div>
+            </section>
 
 
+            <section id="offer-form">
+
+                <div class="input-group input-group-lg">
+                  <label class="input-group-addon" for="offer-price">Precio:</label>
+                  <input id="offer-price" type="text" class="price form-control" value="<%= offer.price %>">
+                  <span class="input-group-addon">
+                    <select >
+                      <option>$</option>
+                      <option>¥</option>
+                      <option>£</option>
+                      <option>€</option>
+                    </select>
+                  </span>
+                </div>
+
+                <div class="input-group input-group-lg">
+                  <span class="input-group-addon">Existencias:</span>
+                  <input type="text" class="stocks form-control" value="<%= offer.stocks %>">
+                  
+                </div>
+
+            </section>
 
 
           </form>
@@ -433,21 +439,27 @@
 
 
       <table class="table table-striped" >
-        <tr>
-          <th width="60%">
-            Titulo / Autores
-          </th>
-          <th>
-            Precio
-          </th>
-          <th>
-            Existencias
-          </th>
-          <th>
-            
-          </th>
-        </tr>
 
+        <thead>
+          <tr>
+            <th width="60%">
+              Titulo / Autores
+            </th>
+            <th>
+              Precio
+            </th>
+            <th>
+              Existencias
+            </th>
+            <th>
+              
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+        </tbody>
 
 
       </table>
