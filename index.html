@@ -28,9 +28,11 @@
 
   <link href='http://fonts.googleapis.com/css?family=Roboto:400,900,300,700,100,400italic' rel='stylesheet' type='text/css'>
 
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css"> --> 
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+ 
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css">
 
   <link rel="stylesheet" href="css/main.css">
   
@@ -296,7 +298,7 @@
           </div>
           </th>
           
-          <td><div class="animate" >
+          <td data-order="<%= offer.price %>"><div class="animate" >
             $ <% print($.number(offer.price, 2, ',', '.' ));  %>
           </div>
           </td>
@@ -462,7 +464,7 @@
             <th>
               Existencias
             </th>
-            <th width="20%">
+            <th width="100px">
               
             </th>
           </tr>
@@ -555,6 +557,7 @@
 
     <script src="js/vendor/jquery.number.min.js"></script>
       
+    <script src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
     
     <script src="js/find-add-book-utils.js"></script>
 
