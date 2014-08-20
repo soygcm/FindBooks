@@ -40,6 +40,10 @@ BookTr = Parse.View.extend({
           success: function(myObject) {
             self.$('.animate').slideUp( 'fast', function () {
                 self.remove();
+
+                //Esto se repite 4 veces
+                appView.admin.removeRow(self.$el);
+
             });
           },
           error: function(myObject, error) {

@@ -98,6 +98,10 @@ input {
 #admin td .animate{
 	padding: 8px;
 }
+#admin td .btn-group{
+	position: absolute;
+	width: 130px;
+}
 
 .btn{
 

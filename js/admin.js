@@ -40,6 +40,8 @@ AdminView = Parse.View.extend({
 
     getBookList: function() {
 
+        // this.dataTable =
+
         self = this;
 
         this.offerList.query = new Parse.Query(Offer);
@@ -52,16 +54,10 @@ AdminView = Parse.View.extend({
                 console.log('offer list success');
 
                 _.each(collection.models, function(offer, i) {
-                        self.addOneOffer(offer);
+                        self.addOfferTr(offer);
                 });
 
-                self.$table.dataTable( {
-                  "columnDefs": [ {
-                      "targets": 3,
-                      "searchable": false,
-                      "orderable": false
-                    } ]
-                } );
+                self.drawTable();
 
             },
             error: function(){
@@ -71,10 +67,78 @@ AdminView = Parse.View.extend({
 
     },
 
-    addOneOffer: function (offer) {
+    // Recibe un $row jQuery y actualiza sus datos
+    updateDataRow: function ($row) {
+
+        var dataRow = this.dataTable.row( $row ).data();
+
+        var $rowTds = $row.find('td');
+            
+        $rowTds.each(function(index, el) {
+
+            if ( $(this).data('order') ) {
+                dataRow[index] = {
+                    "@data-order"   : $(this).data('order'),
+                    "display"       : $(this).html()
+                };
+            }else{
+                dataRow[index] = $(this).html();
+            }
+
+        });
+
+
+        // .draw();
+        
+        this.dataTable.row( $row ).data( dataRow ).draw();
+
+    },
+
+    // Recibe un $row jQuery y lo agrega a los datos de dataTable
+    addRow: function ($row) {
+
+        this.dataTable.row.add( $row ).draw();
+
+    },
+
+    // Recibe un $row jQuery y lo elimina de la dataTable
+    removeRow: function ($row) {
+
+        console.log($row);
+        
+        this.dataTable.row( $row ).remove().draw();
+
+    },
+
+    // guarda el DataTable de la $table objeto (esto genera el ordenamiento, busqueda y paginación en el html)
+    drawTable: function () {
+        
+        this.dataTable = this.$table.DataTable( {
+          "columnDefs": [ {
+              "targets": 3,
+              "searchable": false,
+              "orderable": false
+            } ]
+        } );
+
+    },
+
+    addOfferTr: function (offer) {
         
         var bookTr = new BookTr({model: offer});
-        appView.admin.$tableBody.prepend(bookTr.render().el);
+        var renderTr = bookTr.render().el;
+        appView.admin.$tableBody.prepend(renderTr);
+
+        return renderTr;
+    },
+
+    addOneOffer: function (offer) {
+
+        self = appView.admin;
+        
+        var row = this.$(self.addOfferTr(offer));
+
+        self.addRow(row);
 
     },
 

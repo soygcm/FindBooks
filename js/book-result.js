@@ -2,7 +2,7 @@ BookResult = Parse.View.extend({
     tagName: "a",
     className: "list-group-item",
     events:{
-        "click":"setBookResult"
+        "click" : "setBookResult"
     },
 
     template:_.template($("#book-result-template").html()),

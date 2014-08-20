@@ -27,7 +27,7 @@ AddBooksView = Parse.View.extend({
             self = this;
             this.counting = setTimeout(function(){
                 console.log('buscando...')
-                self.startSearch(e);
+                self.startSearch(null);
             },this.countUp);
             this.searchState = 1;
         }
@@ -42,9 +42,11 @@ AddBooksView = Parse.View.extend({
     },
 
     startSearch: function(e){
-        e.preventDefault();
+        if (e) {
+            e.preventDefault();
+        }
         self = this;
-        if (this.$inputSearch.val() != "" && this.$inputSearch.val() != this.bookCollection.query) {
+        if (e || this.$inputSearch.val() != "" && this.$inputSearch.val() != this.bookCollection.query) {
             this.bookCollection.query = this.$inputSearch.val();
             this.bookCollection.fetch({
                 success:function(collection){
@@ -156,7 +158,7 @@ AddBooksView = Parse.View.extend({
 
 
     empty: function(){
-        this.$inputSearch.val('');
+        // this.$inputSearch.val('');
         this.$results.hide();
         this.$results.modal('hide');
         this.$el.css('z-index', 20);

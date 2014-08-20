@@ -121,6 +121,7 @@ EditBookView = Parse.View.extend({
         self.saveNewOfferParse(book);
     },
 
+    // actualiza la información de la offerta solamente
     updateOffer: function () {
 
         self = this;
@@ -130,11 +131,12 @@ EditBookView = Parse.View.extend({
         offer.set('stocks', Number( this.$stocks.val() ) );
 
         offer.save(null, {success: function(offer){
-            console.log(self.callerView);
+            // console.log(self.callerView);
             self.hide();
 
             if (self.callerView) {
                 self.callerView.render();
+                appView.admin.updateDataRow( self.callerView.$el );
             }
 
         }, error: self.saveError});
