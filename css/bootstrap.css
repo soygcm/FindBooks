@@ -263,8 +263,8 @@ table {
   h3 {
     page-break-after: avoid;
   }
-  .navbar {
-    display: none;
+ 
+
   }
   .table td,
   .table th {
@@ -4373,12 +4373,12 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-default {
-  background-color: #f8f8f8;
-  border-color: #e7e7e7;
+  background-color: #fffffa;
+  border-color: #fffffa;
 }
 
 .navbar-default .navbar-brand {
-  color: #777777;
+  color: #fffffa;
 }
 
 .navbar-default .navbar-brand:hover,
@@ -5324,7 +5324,8 @@ a.list-group-item:focus {
 }
 
 .panel-body {
-  padding: 15px;
+  padding: 0px;
+  
 }
 
 .panel-body:before,
