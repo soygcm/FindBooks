@@ -88,8 +88,14 @@ input {
     padding-right: 20px;
 }
 
-#admin-panel {
+#admin .panel {
 	margin-top: 15px;
+}
+#admin td{
+	padding: 0;
+}
+#admin td .animate{
+	padding: 8px;
 }
 
 .btn{

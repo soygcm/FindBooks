@@ -40,7 +40,7 @@ EditBookView = Parse.View.extend({
 
         delete this.model;
 
-        this.delegateEvents();
+        this.delegateEvents(); //No entiendo
         appView.navHome();
         this.$el.html('');
         delete this.book;

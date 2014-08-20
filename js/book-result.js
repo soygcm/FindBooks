@@ -23,8 +23,5 @@ BookResult = Parse.View.extend({
         this.options.parent.empty();
         appView.showNewBook(this.model);
 
-        // if(this.id != "book-result"){
-            // this.options.parent.setBookResult(this.model);
-        // }
     }
 });

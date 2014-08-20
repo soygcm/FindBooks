@@ -281,29 +281,40 @@
 </script>
 
 <script type="text/template" id="book-tr-template">
+
+
   
-        <td class="row media">
-            <div class="pull-left" >
-                <img src="<%= book.thumbnails.smallThumbnail %>" width="30" height="40" class="media-object" >
-            </div>
-            <div class="media-body">
-              <h3 class="title"><%= book.title %> <small><%= book.subtitle %> </small> </h3>
-              <h4 class="authors"><%= book.authors %></h4>
-            </div>
-        </th>
-
-        <td>
-          $ <% print($.number(offer.price, 2, ',', '.' ));  %>
-        </td>
-
-        <td>
-          <%= offer.stocks %>
-        </td>
-
-        <td>
-            <a href="#"><i class="fa fa-pencil fa-fw"></i></a>
-            <a href="#"><i class="fa fa-trash-o fa-fw"></i></a>
-        </td>
+        
+          <td class="row media"><div class="animate" >
+              <div class="pull-left" >
+                  <img src="<%= book.thumbnails.smallThumbnail %>" width="30" height="40" class="media-object" >
+              </div>
+              <div class="media-body">
+                <h3 class="title"><%= book.title %> <small><%= book.subtitle %> </small> </h3>
+                <h4 class="authors"><%= book.authors %></h4>
+              </div>
+          </div>
+          </th>
+          
+          <td><div class="animate" >
+            $ <% print($.number(offer.price, 2, ',', '.' ));  %>
+          </div>
+          </td>
+          
+          <td><div class="animate" >
+            <%= offer.stocks %>
+          </div>
+          </td>
+          
+          <td><div class="animate" >
+              <button type="button" class="btn btn-primary"><i class="fa fa-pencil fa-fw fa-lg"></i></button>
+              <div class="btn-group clickable">
+                <button type="button" class="btn hidden no-delete btn-default">Cancel</button>
+                <button type="button" class="delete-confirm btn btn-primary"><i class="fa fa-trash-o fa-fw fa-lg"></i></button>
+              </div>
+          </div>
+          </td>
+        
 
 </script>
 
@@ -451,7 +462,7 @@
             <th>
               Existencias
             </th>
-            <th>
+            <th width="20%">
               
             </th>
           </tr>
@@ -533,13 +544,14 @@
 </script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
 
     <script src="js/vendor/underscore-1.1.6.js"></script>
 
-    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.16.min.js"></script>
+    <script src="js/vendor/parse-1.2.19.min.js"></script>
 
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
     <script src="js/vendor/jquery.number.min.js"></script>
       
@@ -568,6 +580,6 @@
             // (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             // g.src='//www.google-analytics.com/ga.js';
             // s.parentNode.insertBefore(g,s)}(document,'script'));
-</script>
+    </script>
 </body>
 </html>

@@ -2,7 +2,10 @@ BookTr = Parse.View.extend({
     tagName: "tr",
 
     events:{
-        "click":"editBook"
+        "click .delete-confirm" : "deleteConfirmBook",
+        "click .delete"         : "deleteBook",
+        "click .no-delete"      : "noDelete",
+        "click"                 : "editBook",
     },
 
     template:_.template($("#book-tr-template").html()),
@@ -11,6 +14,57 @@ BookTr = Parse.View.extend({
 
         // this.model.on('change', this.render);
         
+    },
+
+    deleteConfirmBook: function (e) {
+
+        this.$('.delete-confirm').addClass('delete');
+        this.$('.delete-confirm').removeClass('delete-confirm');
+
+        var $noDelete = this.$('.no-delete');
+        $noDelete.show().removeClass('hidden');
+        var width = $noDelete.outerWidth();
+        $noDelete.width(0);
+        $noDelete.animate({width: width}, 'fast');
+    },
+
+    deleteBook: function (e) {
+        // this.$(e.target).button('reset');
+
+        self = this;
+
+        this.$('td').css('background-color', 'FireBrick');
+        this.$('td').css('color', 'white');
+
+        this.model.destroy({
+          success: function(myObject) {
+            self.$('.animate').slideUp( 'fast', function () {
+                self.remove();
+            });
+          },
+          error: function(myObject, error) {
+            
+          }
+        });
+
+        
+
+        // delete this;
+    },
+
+    noDelete: function (e) {
+        this.$('.delete').addClass('delete-confirm');
+        this.$('.delete').removeClass('delete');
+
+        var $noDelete = this.$('.no-delete');
+        $noDelete.animate({
+            width: 0, 
+            paddingLeft: 0,
+            paddingRight: 0,
+        }, 'fast', function () {
+            $noDelete.removeAttr('style');
+            $noDelete.hide();
+        });
     },
     
     render: function() {
@@ -37,15 +91,16 @@ BookTr = Parse.View.extend({
 
         return this;
     },
-    editBook: function(){
-        
-        appView.showEditBook(this);
-        
-        // this.options.parent.empty();
-        // appView.showNewBook(this.model);
 
-        // // if(this.id != "book-result"){
-        //     // this.options.parent.setBookResult(this.model);
-        // // }
+    editBook: function(e){
+
+        var hasClickables = this.$(e.target).closest('.clickable');
+
+        // console.log(e.target, hasClickables);
+
+        if(!hasClickables.length){
+            appView.showEditBook(this);
+        }
+
     }
 });
