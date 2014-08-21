@@ -30,6 +30,21 @@ input {
 	font-size: 16px;
 }
 
+.navbar {
+	background-color: #fffffa;		
+	border-color: #fffffa;
+}
+
+.media-object{
+	width: 50px;
+	height: 80px;
+
+}
+
+.animate {
+	font-size: 24px;
+}
+
 #add-book{
 	position: relative;
 }
@@ -101,6 +116,12 @@ input {
 #admin td .btn-group{
 	position: absolute;
 	width: 130px;
+}
+
+#title {
+	margin-top: 0px;
+	margin-bottom: 10px;
+	margin-left: 10px;
 }
 
 .btn{
