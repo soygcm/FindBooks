@@ -5,7 +5,6 @@
    ========================================================================== */
 
 body{
-
 	background: url(../img/fondo1.jpg) no-repeat fixed;
 	background-size: 100% auto;
     padding-bottom: 20px;
@@ -13,6 +12,7 @@ body{
 	font-weight: 300;
 
 }
+
 body.logged{
 
 	background-image: none;
@@ -31,20 +31,16 @@ input {
 	font-size: 16px;
 }
 
-.navbar {
-	background-color: #fffffa;		
-	border-color: #fffffa;
-}
-
-.media-object{
-	width: 50px;
-	height: 80px;
+table.dataTable thead th, table.dataTable thead td {
+	border-bottom: none;
 
 }
 
-.animate {
-	font-size: 24px;
+table.dataTable.no-footer {
+	border-bottom: none;
 }
+
+
 
 #add-book{
 	position: relative;
@@ -120,6 +116,7 @@ input {
 
 #admin .panel {
 	margin-top: 15px;
+	border-color: #fffffa;
 }
 #admin td{
 	padding: 0;
@@ -138,8 +135,11 @@ input {
 	margin-left: 10px;
 }
 
-.btn{
+.DataTables_Table_0 {
+	border-color: #B8B1AB;
+}
 
+.btn{
 	text-transform: uppercase;
 	border-radius: 0;
 }
@@ -149,6 +149,15 @@ input {
 	border-color: #E24B2C;
 }
 
+.delete-confirm:hover {
+	background-color: #E24B2C;
+	border-color: #E24B2C;
+}
+
+.btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
+	background-color: #E24B2C;
+	border-color: #E24B2C;
+}
 
 
 .input-group {
@@ -156,10 +165,17 @@ input {
 }
 
 
+.navbar {
+	background-color: #fffffa;		
+	border-color: #fffffa;
+}
 
+.media-object{
+	width: 50px;
+	height: 80px;
 
+}
 
-
-
-
-
+.animate {
+	font-size: 24px;
+}
