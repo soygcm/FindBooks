@@ -10,14 +10,11 @@ body{
     padding-bottom: 20px;
 	font-family: 'Roboto', sans-serif	;
 	font-weight: 300;
-
 }
 
 body.logged{
-
 	background-image: none;
 	background-color: #fffffa;
-
 }
 
 
@@ -31,19 +28,9 @@ input {
 	font-size: 16px;
 }
 
-table.dataTable thead th, table.dataTable thead td {
-	border-bottom: none;
-
-}
-
-table.dataTable.no-footer {
-	border-bottom: none;
-}
-
-
-
 #add-book{
 	position: relative;
+	background-color: #FFF4EB;
 }
 #add-book .results{
 	position: absolute;
@@ -54,6 +41,7 @@ table.dataTable.no-footer {
 #add-book .list-group-item:last-child{
 	margin-bottom: 3em;
 }
+
 
 #logo {
 	margin: 24px 62px 12px 0px;
@@ -68,6 +56,7 @@ table.dataTable.no-footer {
 	display: block;
 	margin-top: 12px;
 	width: 224px;
+
 
 }
 
@@ -116,17 +105,34 @@ table.dataTable.no-footer {
 
 #admin .panel {
 	margin-top: 15px;
-	border-color: #fffffa;
+	border-color: #915822;
+	border-radius: 0px;
 }
 #admin td{
 	padding: 0;
 }
 #admin td .animate{
 	padding: 8px;
+
 }
 #admin td .btn-group{
 	position: absolute;
 	width: 130px;
+}
+#admin table {
+	border-bottom: none;
+}
+#admin table thead th, table thead td {
+	border-bottom: none;
+}
+
+#admin table thead{
+	background-color: #AA4A58;
+	color:#FFFFFF;
+}
+
+table tr:nth-child(even) > td{
+	background-color: #FFF4EB;
 }
 
 #title {
@@ -144,26 +150,20 @@ table.dataTable.no-footer {
 	border-radius: 0;
 }
 
-.delete-confirm {
-	background-color: #E24B2C;
-	border-color: #E24B2C;
-}
-
-.delete-confirm:hover {
-	background-color: #E24B2C;
-	border-color: #E24B2C;
-}
-
-.btn-primary:focus, .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary {
-	background-color: #E24B2C;
-	border-color: #E24B2C;
-}
 
 
 .input-group {
 	margin-bottom: 10px;
 }
+.input-group-addon {
+	border-radius: 0px;
+	border: none;
+	background-color:transparent;
+}
 
+.input-group .title-isbn{
+	background-color: transparent;
+}
 
 .navbar {
 	background-color: #fffffa;		
