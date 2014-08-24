@@ -28,6 +28,18 @@ input {
 	font-size: 16px;
 }
 
+h3.title {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: 6px;
+
+}
+
+h4.authors {
+	margin-left: 12px;
+
+}
+
 #add-book{
 	position: relative;
 	background-color: #FFF4EB;
@@ -113,6 +125,7 @@ input {
 }
 #admin td .animate{
 	padding: 8px;
+	font-size: 19px;
 
 }
 #admin td .btn-group{
@@ -127,7 +140,7 @@ input {
 }
 
 #admin table thead{
-	background-color: #AA4A58;
+	background-color: #ca8142;
 	color:#FFFFFF;
 }
 
@@ -149,7 +162,6 @@ table tr:nth-child(even) > td{
 	text-transform: uppercase;
 	border-radius: 0;
 }
-
 
 
 .input-group {
@@ -176,6 +188,8 @@ table tr:nth-child(even) > td{
 
 }
 
-.animate {
-	font-size: 24px;
+.media-object:hover{
+	width: 75px;
+	height: 120px;
+
 }
