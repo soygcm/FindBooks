@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
@@ -130,17 +130,17 @@
             <section id="book-form">
             
                 <div class="input-group">
-                  <span class="input-group-addon">Titulo:</span>
+                  <span class="input-group-addon">Title:</span>
                   <input type="text" class="title form-control" value="<%= book.title %>">
                 </div>
 
                 <div class="input-group">
-                  <span class="input-group-addon">Subtitulo:</span>
+                  <span class="input-group-addon">Subtitle:</span>
                   <input type="text" class="subtitle form-control" value="<%= book.subtitle %>">
                 </div>
 
                 <div class="input-group">
-                  <span class="input-group-addon">Autores:</span>
+                  <span class="input-group-addon">Authors:</span>
                   <input type="text" class="authors form-control" value="<%= book.authors %>">
                 </div>
 
@@ -150,7 +150,7 @@
             <section id="offer-form">
 
                 <div class="input-group input-group-lg">
-                  <label class="input-group-addon" for="offer-price">Precio:</label>
+                  <label class="input-group-addon" for="offer-price">Price:</label>
                   <input id="offer-price" type="text" class="price form-control" value="<%= offer.price %>">
                   <span class="input-group-addon">
                     <select >
@@ -158,12 +158,14 @@
                       <option>¥</option>
                       <option>£</option>
                       <option>€</option>
+                      <option>R$</option>
+                      <option>₡</option>
                     </select>
                   </span>
                 </div>
 
                 <div class="input-group input-group-lg">
-                  <span class="input-group-addon">Existencias:</span>
+                  <span class="input-group-addon">Stock:</span>
                   <input type="text" class="stocks form-control" value="<%= offer.stocks %>">
                   
                 </div>
@@ -254,7 +256,7 @@
             <div class="col-sm-6 text-right">
             April 2, 2012
               ||  
-            Pasta dura
+            Hard Cover
             </div>
           </div>
           
@@ -266,7 +268,7 @@
           <form role="form"  class="panel-body add" >
             
             <div class="input-group">
-              <span class="input-group-addon">Agregar libro:</span>
+              <span class="input-group-addon">Add book:</span>
               <input type="text" class="title-isbn form-control" placeholder="Nombre/ISBN">
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button">
@@ -357,23 +359,27 @@
 
 <script type="text/template" id="book-tr-template">
 
-          <td class="row media"><div class="animate" >
+          <td class="row "><div class="animate media" >
               <div class="pull-left" >
                   <img src="<%= book.thumbnails.smallThumbnail %>" width="30" height="40" class="media-object clickable" >
               </div>
               <div class="media-body">
-                <h3 class="title"><%= book.title %> <small><%= book.subtitle %> </small> </h3>
-                <h4 class="authors"><%= book.authors %></h4>
+                <h3 class="media-heading"><%= book.title %>: <small><%= book.subtitle %> 
+                </small> 
+                <h4>
+                  <em class="authors">By <%= book.authors %></em>
+                </h4>
+                </h3>
               </div>
           </div>
           </th>
           
-          <td data-order="<%= offer.price %>"><div class="animate" >
+          <td data-order="<%= offer.price %>"><div class="animate numbers" >
             $ <% print($.number(offer.price, 2, ',', '.' ));  %>
           </div>
           </td>
           
-          <td><div class="animate" >
+          <td><div class="animate numbers" >
             <%= offer.stocks %>
           </div>
           </td>
@@ -415,13 +421,13 @@
                   </div>
 
                 <div class= "tex-center">
-                  Libros de xx lugar... .csv <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-remove"></span></button>
+                  Books database... .csv <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-remove"></span></button>
 
                 </div>
 
 
                 <div class="panel-body text-left">
-                    Debes seleccionar archivos compatibles con la plataforma, estos son archivos con extensión “CSV separado por comas”.  Si quieres subir un archivo de otra extensión, contactanos.
+                    You must select the platform compatible files, these are files with extension "CSV Comma Separated". If you want to upload a file from another extension, contact us.
                 </div>
               
                 </div>
@@ -465,13 +471,13 @@
         <thead>
           <tr>
             <th width="60%">
-              Titulo / Autores
+              Title / Authors
             </th>
             <th>
-              Precio
+              Price
             </th>
             <th>
-              Existencias
+              Stock
             </th>
             <th width="100px">
               
