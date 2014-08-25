@@ -8,13 +8,13 @@ body{
 	background: url(../img/fondo1.jpg) no-repeat fixed;
 	background-size: 100% auto;
     padding-bottom: 20px;
-	font-family: 'Roboto', sans-serif	;
+	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
 }
 
 body.logged{
 	background-image: none;
-	background-color: #fffffa;
+	background-color: #ffffff;
 }
 
 
@@ -117,7 +117,7 @@ h4.authors {
 
 #admin .panel {
 	margin-top: 15px;
-	border-color: #915822;
+	border-color: #D1BCA9;
 	border-radius: 0px;
 }
 #admin td{
@@ -159,20 +159,18 @@ table tr:nth-child(even) > td{
 	margin-left: 10px;
 }
 
-.DataTables_Table_0 {
-	border-color: #B8B1AB;
-}
 
 .btn{
 	text-transform: uppercase;
 	border-radius: 0;
+
 }
 
 
 .input-group {
 	margin-bottom: 10px;
 	border-radius: 0px;
-	border:1px solid #F5EBE7;
+	
 }
 .input-group-addon {
 	border-radius: 0px;
@@ -187,10 +185,44 @@ table tr:nth-child(even) > td{
 	box-shadow: none;
 }
 
+.input-group .title-isbn {
+	border-bottom:1px solid #A0856D;
+	background: url(../img/linea.jpg) no-repeat bottom left,url(../img/linea.jpg) no-repeat bottom right ;
+	background-size: 1px 20%;
+}
+
+.search {
+	border-bottom:1px solid #A0856D;
+	background: url(../img/linea.jpg) no-repeat bottom left, url(../img/linea.jpg) no-repeat bottom right ;
+	background-size: 1px 20%;
+}
+
+
+.list-group-item:last-child, .list-group-item:first-child {
+	border-radius: 0px;	
+}
+.list-group-item {
+	border:none;
+}
+a.list-group-item:hover, a.list-group-item:focus {
+	background-color: #FFE4D2;
+}
+
+
+.input-group button {
+	background-color: transparent;
+	border-color: transparent;
+}
+.input-group i {
+	color: #915822;
+}
 
 .navbar {
-	background-color: #fffffa;		
-	border-color: #fffffa;
+	background-color: #ffffff;		
+	border-bottom-color: #F1E7DF;
+	border-radius: 0px;
+ 
+
 }
 
 .media-object{
