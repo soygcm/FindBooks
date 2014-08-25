@@ -3,10 +3,15 @@ EditImageView = Parse.View.extend({
     events:{        
         "hidden.bs.modal .modal"    : "onHiddenModal",  
         "click .save"               : 'saveOffer',
+        "click .nav-tabs a"         : "showTab",
     },
 
     template: _.template($("#edit-image-template").html()),
 
+    showTab: function (e) {
+        e.preventDefault()
+        $(this).tab('show')
+    },
 
     selectType: function(e){
         e.preventDefault();
@@ -34,6 +39,8 @@ EditImageView = Parse.View.extend({
     render: function() {
 
         this.$el.html(this.template());
+
+        this.$('.nav-tabs a:last').tab('show')
 
         this.$modal = this.$(".modal");
 
