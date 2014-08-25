@@ -28,6 +28,18 @@ input {
 	font-size: 16px;
 }
 
+h3.title {
+	margin-top: 4px;
+	margin-bottom: 4px;
+	margin-left: 6px;
+
+}
+
+h4.authors {
+	margin-left: 12px;
+
+}
+
 #add-book{
 	position: relative;
 	background-color: #FFF4EB;
@@ -115,6 +127,7 @@ input {
 }
 #admin td .animate{
 	padding: 8px;
+	font-size: 19px;
 
 }
 #admin td .btn-group{
@@ -129,7 +142,7 @@ input {
 }
 
 #admin table thead{
-	background-color: #ca8142;
+	background-color: #C0713C;
 	color:#FFFFFF;
 }
 #admin .numbers {
@@ -175,7 +188,6 @@ table tr:nth-child(even) > td{
 }
 
 
-
 .navbar {
 	background-color: #fffffa;		
 	border-color: #fffffa;
@@ -186,7 +198,10 @@ table tr:nth-child(even) > td{
 	height: 80px;
 }
 
+
 .modal-content {
-	border-radius: none;
+	border-radius: 0px;
 	
 }
+
+
