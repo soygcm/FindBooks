@@ -69,6 +69,8 @@
 
     <div id="edit-book"></div>
 
+    <div id="edit-image"></div>
+
     <div id="admin" class="container"></div>
 
     <div id="import-db" class="container-fluid"></div>
@@ -284,14 +286,80 @@
 
 </script>
 
+<script type="text/template" id="edit-image-template">
+  
+  
+          <!-- Agregar imagen -->
+          <div class="modal fade" id="upload-img" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                
+              <div class="modal-body">
+                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
+
+                  
+                <!-- Pestañas de navegación --> 
+                <ul  class = "nav nav-tabs"  role= "tablist" > 
+
+                  <li><h3 class="modal-title">Upload Image</h3></li>       
+                  <li><a  href= "#search"  role= "tab"  data-toggle= "tab" > Search </a></li> 
+                  <li><a  href= "#upload"  role= "tab"  data-toggle= "tab" > Upload </a></li>                 
+                </ul>
+                           
+              <!-- Paneles Tab --> 
+                <div  class = "ficha-content" > 
+                  <div  class = "ficha-panel active"  id= "home" > ... </div> 
+                  
+                  <div  class= "tab-pane"  id= "search" >
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Find the image">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                          <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                      </span>
+                    </div>
+
+                    <div class=" text-center">
+                      .....
+                    </div>
+                  </div> 
+
+                  <div  class= "tab-pane"  id= "upload" >
+                    <div class="text-center">                  
+                      <div class="panel-body">
+                        <button class="btn btn-success" type="button">Upload a File</button>
+                      </div>
+                    </div>
+                    <div class=" text-center">
+                      .....
+                    </div>
+                  </div> 
+
+                </div>
+
+              </div>        
+                
+              
+
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                  <button type="button" class="btn btn-success">Select</button>
+                </div>
+              </div>
+            </div>            
+          </div>
+
+<!-- se termina Agregar imagen -->
+
+</script>
+
 <script type="text/template" id="book-tr-template">
 
-
-  
-        
           <td class="row media"><div class="animate" >
               <div class="pull-left" >
-                  <img src="<%= book.thumbnails.smallThumbnail %>" width="30" height="40" class="media-object" >
+                  <img src="<%= book.thumbnails.smallThumbnail %>" width="30" height="40" class="media-object clickable" >
               </div>
               <div class="media-body">
                 <h3 class="title"><%= book.title %> <small><%= book.subtitle %> </small> </h3>
@@ -380,68 +448,7 @@
             </div>
           </div>
 
-<!-- Agregar imagen -->
-          <div class="modal fade" id="upload-img" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                
-              <div class="modal-body">
-                  <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"></span></button>
 
-                  
-                <!-- Pestañas de navegación --> 
-                <ul  class = "nav nav-tabs"  role= "tablist" > 
-
-                  <li><h3 class="modal-title">Upload Image</h3></li>       
-                  <li><a  href= "#search"  role= "tab"  data-toggle= "tab" > Search </a></li> 
-                  <li><a  href= "#upload"  role= "tab"  data-toggle= "tab" > Upload </a></li>                 
-                </ul>
-                           
-              <!-- Paneles Tab --> 
-                <div  class = "ficha-content" > 
-                  <div  class = "ficha-panel active"  id= "home" > ... </div> 
-                  
-                  <div  class= "tab-pane"  id= "search" >
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Find the image">
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
-                          <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                      </span>
-                    </div>
-
-                    <div class=" text-center">
-                      .....
-                    </div>
-                  </div> 
-
-                  <div  class= "tab-pane"  id= "upload" >
-                    <div class="text-center">                  
-                      <div class="panel-body">
-                        <button class="btn btn-success" type="button">Upload a File</button>
-                      </div>
-                    </div>
-                    <div class=" text-center">
-                      .....
-                    </div>
-                  </div> 
-
-                </div>
-
-              </div>        
-                
-              
-
-
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-success">Select</button>
-                </div>
-              </div>
-            </div>            
-          </div>
-<!-- se termina Agregar imagen -->
 
       </div>
 
@@ -571,6 +578,7 @@
     <script src="js/book-result.js"></script>
     <script src="js/book-tr.js"></script>
     <script src="js/edit-book.js"></script>
+    <script src="js/edit-image.js"></script>
     <script src="js/login.js"></script>
     <script src="js/nav.js"></script>
     <script src="js/add-book.js"></script>

@@ -113,6 +113,19 @@ AppView = Parse.View.extend({
 		// console.log('new ' + model.get('idGBook'));
 	},
 
+	showEditImage: function(bookTr) {
+
+		if (!this.editImage){
+			this.editImage = new EditImageView();
+		}
+		if(this.editImage.$el.html() == '') {
+			this.editImage.model = bookTr.model;
+			this.editImage.callerView = bookTr;
+			this.editImage.render();
+		}
+
+	},
+
 	// showEditBook: function(id) {
 
 	// 	appRouter.navigate('edit/'+id);

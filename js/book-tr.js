@@ -6,6 +6,7 @@ BookTr = Parse.View.extend({
         "click .delete"         : "deleteBook",
         "click .no-delete"      : "noDelete",
         "click"                 : "editBook",
+        "click img"             : "editImage",
     },
 
     template:_.template($("#book-tr-template").html()),
@@ -26,6 +27,12 @@ BookTr = Parse.View.extend({
         var width = $noDelete.outerWidth();
         $noDelete.width(0);
         $noDelete.animate({width: width}, 'fast');
+    },
+
+    editImage: function () {
+
+        appView.showEditImage(this);
+        
     },
 
     deleteBook: function (e) {
