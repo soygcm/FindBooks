@@ -289,23 +289,23 @@
 
   
         
-          <td class="row media"><div class="animate" >
+          <td class="row "><div class="animate media" >
               <div class="pull-left" >
                   <img src="<%= book.thumbnails.smallThumbnail %>" width="30" height="40" class="media-object" >
               </div>
               <div class="media-body">
-                <h3 class="title"><%= book.title %> <small><%= book.subtitle %> </small> </h3>
+                <h3 class="media-heading"><%= book.title %> <small><%= book.subtitle %> </small> </h3>
                 <h4 class="authors"><%= book.authors %></h4>
               </div>
           </div>
           </th>
           
-          <td data-order="<%= offer.price %>"><div class="animate" >
+          <td data-order="<%= offer.price %>"><div class="animate numbers" >
             $ <% print($.number(offer.price, 2, ',', '.' ));  %>
           </div>
           </td>
           
-          <td><div class="animate" >
+          <td><div class="animate numbers" >
             <%= offer.stocks %>
           </div>
           </td>

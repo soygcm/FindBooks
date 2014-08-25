@@ -110,6 +110,8 @@ input {
 }
 #admin td{
 	padding: 0;
+	vertical-align: middle;
+	border: none;
 }
 #admin td .animate{
 	padding: 8px;
@@ -127,8 +129,11 @@ input {
 }
 
 #admin table thead{
-	background-color: #AA4A58;
+	background-color: #ca8142;
 	color:#FFFFFF;
+}
+#admin .numbers {
+	font-size: 24px;
 }
 
 table tr:nth-child(even) > td{
@@ -151,9 +156,10 @@ table tr:nth-child(even) > td{
 }
 
 
-
 .input-group {
 	margin-bottom: 10px;
+	border-radius: 0px;
+	border:1px solid #F5EBE7;
 }
 .input-group-addon {
 	border-radius: 0px;
@@ -161,9 +167,14 @@ table tr:nth-child(even) > td{
 	background-color:transparent;
 }
 
-.input-group .title-isbn{
+.input-group .form-control {
+	border-radius: none;
 	background-color: transparent;
+	border: none;
+	box-shadow: none;
 }
+
+
 
 .navbar {
 	background-color: #fffffa;		
@@ -173,9 +184,9 @@ table tr:nth-child(even) > td{
 .media-object{
 	width: 50px;
 	height: 80px;
-
 }
 
-.animate {
-	font-size: 24px;
+.modal-content {
+	border-radius: none;
+	
 }
