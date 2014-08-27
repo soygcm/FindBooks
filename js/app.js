@@ -115,15 +115,15 @@ AppView = Parse.View.extend({
 
 	showEditImage: function(bookTr) {
 
-		if (!this.editImage){
-			this.editImage = new EditImageView();
+		if (this.editImage) {
+			this.editImage.remove()
 		}
 
-		if(this.editImage.$el.html() == '') {
-			this.editImage.model = bookTr.model.get('book');
-			this.editImage.callerView = bookTr;
-			this.editImage.render();
-		}
+		this.editImage 				= new EditImageView()
+		this.editImage.model 		= bookTr.model.get('book')
+		this.editImage.callerView 	= bookTr
+
+		this.$el.append(this.editImage.render().el)
 
 	},
 

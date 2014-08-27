@@ -1,7 +1,6 @@
 EditImageView = Parse.View.extend({
-    el: "#edit-image",
+    tagName: "section",
     events:{        
-        "hidden.bs.modal .modal"    : "onHiddenModal",  
         "click .save"               : 'saveImage',
         "click .nav-tabs a"         : "showTab",
         'keyup input.search'        : 'searchImages',
@@ -40,22 +39,6 @@ EditImageView = Parse.View.extend({
         console.log(this.currentTab)
     },
 
-    onHiddenModal: function(){
-
-        this.offerEdited = false;
-        this.bookEdited = false;
-        delete this.model;
-        this.delegateEvents(); //No entiendo, es supuestamente para controlar los eventos
-        this.$el.html('');
-        delete this.book;
-    },
-
-    hide: function(){
-        if (this.$modal) {
-            this.$modal.modal('hide');
-        }
-    },
-
     render: function() {
 
         var bookJson = ''
@@ -88,7 +71,9 @@ EditImageView = Parse.View.extend({
 
     saveImage: function(e){
 
-        var fileUploadControl = this.$imputFile[0]
+        console.log(this.model)
+
+        var fileUploadControl = this.$inputFile[0] || []
 
         self = this
 
