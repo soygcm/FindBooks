@@ -290,8 +290,8 @@
 
 <script type="text/template" id="edit-image-template">
   
-  
-          <!-- Agregar imagen -->
+  <!-- Agregar imagen -->
+
           <div class="modal fade" id="upload-img" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
               <div class="modal-content">
@@ -301,20 +301,19 @@
                   
                 <!-- Pestañas de navegación --> 
                 <ul class = "nav nav-tabs"  role= "tablist" > 
-
-                  <li><h3 class="modal-title">Upload Image</h3></li>       
+                  <li><h3 class="modal-title">Upload Image</h3></li>      
                   <li><a href= "#search"  role= "tab"  data-toggle= "tab" > Search </a></li> 
-                  <li><a href= "#upload"  role= "tab"  data-toggle= "tab" > Upload </a></li>                 
+                  <li  class="active" ><a href= "#upload"  role= "tab"  data-toggle= "tab" > Upload </a></li>                 
                 </ul>
                            
               <!-- Paneles Tab --> 
                 <div  class = "tab-content" > 
-
-                  <div  class = "tab-pane active"  id= "home" > ... </div> 
                   
-                  <div  class= "tab-pane"  id= "search" >
+                  <div  class= "tab-pane "  id= "search" >
                     <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Find the image">
+                      
+                      <input type="text" class="search form-control" value="<%= book.title %>" > 
+                      
                       <span class="input-group-btn">
                         <button class="btn btn-default" type="button">
                           <i class="fa fa-search fa-lg"></i>
@@ -322,19 +321,29 @@
                       </span>
                     </div>
 
-                    <div class=" text-center">
-                      .....
+                    <div class="result">
+
+
+                      
+
                     </div>
                   </div> 
 
-                  <div  class= "tab-pane"  id= "upload" >
+                  <div  class= "tab-pane active"  id= "upload" >
                     <div class="text-center">                  
                       <div class="panel-body">
+
+                        <input class="file btn" type="file">
+
                         <button class="btn btn-success" type="button">Upload a File</button>
+
+
                       </div>
                     </div>
-                    <div class=" text-center">
-                      .....
+                    <div class="preview">
+                    
+                      
+
                     </div>
                   </div> 
 
@@ -342,12 +351,10 @@
 
               </div>        
                 
-              
-
 
                 <div class="modal-footer">
                   <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                  <button type="button" class="btn btn-success">Select</button>
+                  <button type="button" class="save btn btn-success">Select</button>
                 </div>
               </div>
             </div>            

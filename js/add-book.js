@@ -5,12 +5,9 @@ AddBooksView = Parse.View.extend({
 
     events: {
         'keyup input.title-isbn'    : 'logKey',
-        // 'keyup input.title'         : 'searchImages',
         'submit form.add'           : 'startSearch',
         // 'click button.erase'        : 'eraseResults',
-        // 'click button.eraseimage'   : 'eraseImage',
         'click button.add'          : 'addBook',
-        // 'click img.imageresult'     :'selectImage',
     },
 
     countUp: 600,
@@ -73,47 +70,7 @@ AddBooksView = Parse.View.extend({
         var bookResult = new BookResult({model: book, parent: this});
         this.$results.append(bookResult.render().el);
     },
-    searchImagesState: 0,
-    searchImages: function(e){
-            if (this.searchImagesState == 1) {
-                clearTimeout(this.countingImages);
-            }
-            // console.log('iniciando conteo hasta '+this.countUp);
-            self = this;
-            this.countingImages = setTimeout(function(){
-                console.log('buscando...')
-                self.startSearchImages();
-
-            },this.countUp);
-            this.searchImagesState = 1;
-    },
-    startSearchImages: function () {
-        self = this;
-
-        $.getJSON('https://www.googleapis.com/customsearch/v1', 
-            {
-                key: 'AIzaSyBG4Ajg_18bLW2a5Im0V8BrydLrKVCA0jE',
-                cx: '009812348751333104389:4ld9qfojt_y',
-                q: this.$inputTitle.val(),
-                searchType: 'image'
-            }, 
-            function(json, textStatus) {
-                self.$ulImageResults.empty();
-                _.each(json.items, function(image, key, list){
-                    $('<img/>',{
-                        src: image.image.thumbnailLink,
-                        class: 'imageresult',
-                        'data-link': image.link,
-                        'data-thumb': image.image.thumbnailLink
-                    }).appendTo($('<li>'))
-                    .appendTo(self.$ulImageResults);
-                });
-        });
-    },
-    selectImage:function (e) {
-        this.$ulImageResults.find('img').hide();
-        this.$ulImageResults.find(e.target).attr('src', this.$(e.target).data('link')).addClass('selected').show();
-    },
+    
     eraseImage: function () {
         this.$ulImageResults.find('img').show();
 

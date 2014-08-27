@@ -2,8 +2,12 @@ EditImageView = Parse.View.extend({
     el: "#edit-image",
     events:{        
         "hidden.bs.modal .modal"    : "onHiddenModal",  
-        "click .save"               : 'saveOffer',
+        "click .save"               : 'saveImage',
         "click .nav-tabs a"         : "showTab",
+        'keyup input.search'        : 'searchImages',
+        // 'click button.eraseimage'   : 'eraseImage',
+        'click img.imageresult'     : 'selectImage',
+        "shown.bs.tab .nav-tabs a"  : "shownTab",
     },
 
     template: _.template($("#edit-image-template").html()),
@@ -13,11 +17,9 @@ EditImageView = Parse.View.extend({
         $(this).tab('show')
     },
 
-    selectType: function(e){
-        e.preventDefault();
-        this.type = $(e.target).data('value');
-        this.$("#values > .form-group").hide();
-        this.$("#values ."+this.type).show();
+    shownTab: function (e) {
+        this.currentTab = $(e.target).attr('href')
+        console.log(this.currentTab)
     },
 
     onHiddenModal: function(){
@@ -38,124 +40,111 @@ EditImageView = Parse.View.extend({
 
     render: function() {
 
-        this.$el.html(this.template());
+        var bookJson = ''
 
-        this.$('.nav-tabs a:last').tab('show')
-
-        this.$modal = this.$(".modal");
-
-        this.$modal.modal('show');
-
-        return this;
-    },
-
-    saveOffer: function(e){
-
-
-        // Es una oferta nueva: se crea un libro y se agrega a una oferta.
-
-        if (this.book) {
-
-            e.preventDefault();
-            this.$('button').attr("disabled", true);
-            // book = this.offerSearch.selectedResult || this.offerSearch.createBook();
-            self = this;
-            console.log(this.book);
-
-            this.book.save(null, {success: self.saveBookSuccess, error: self.saveError});
+        if (this.model) {
+            bookJson = this.model.toJSON()
         }
 
-        // Solo hay que actualizar la oferta
-        else if(this.offerEdited && !this.bookEdited){
-
-            this.updateOffer();
-
+        var datos =  {
+            'book'  :  bookJson,
         }
 
-        // Hay que crear un nuevo libro
+        this.$el.html(this.template(datos))
+
+        this.currentTab = "#upload"
+
+        this.$modal             = this.$(".modal")
+        this.$ulImageResults    = this.$(".result")
+        this.$inputTitle        = this.$("input.search")
+        this.$footer            = this.$(".modal-footer")
+
+        this.$modal.modal('show')
+
+        return this
     },
 
-    saveBookSuccess: function(book){
-        self.$('.modal-footer').css('background-color', 'lightgreen');
-        self.saveNewOfferParse(book);
-    },
+    saveImage: function(e){
 
-    // actualiza la información de la offerta solamente
-    updateOffer: function () {
+        var fileUploadControl = $("#upload .file")[0]
 
         self = this;
+
+        if (this.currentTab == "#upload" &&  fileUploadControl.files.length > 0) {
+            
+            this.$footer.find('button').attr("disabled", true)
+
+            var file = fileUploadControl.files[0]
+            var name = "photo.jpg"
+            var picture = new Parse.File(name, file)
+            picture.save().then(function() {
+                
+                self.model.set("picture", picture)
+                return self.model.save()
+
+            }).then(function (model, success) {
+
+                console.log(success);
+                
+                self.$footer.css('background-color', 'lightgreen')
+                self.$footer.find('button').attr("disabled", false)
+
+            }, self.saveError)
+
+        }
         
-        var offer = this.model;
-        offer.set('price', Number( this.$price.val() ) );
-        offer.set('stocks', Number( this.$stocks.val() ) );
+    },
 
-        offer.save(null, {success: function(offer){
-            // console.log(self.callerView);
-            self.hide();
-
-            if (self.callerView) {
-                self.callerView.render();
-                appView.admin.updateDataRow( self.callerView.$el );
+    searchImagesState: 0,
+    searchImages: function(e){
+            if (this.searchImagesState == 1) {
+                clearTimeout(this.countingImages);
             }
+            // console.log('iniciando conteo hasta '+this.countUp);
+            self = this;
+            this.countingImages = setTimeout(function(){
+                console.log('buscando...')
+                self.startSearchImages();
 
-        }, error: self.saveError});
+            },this.countUp);
+            this.searchImagesState = 1;
+    },
+    startSearchImages: function () {
+        self = this;
 
+        $.getJSON('https://www.googleapis.com/customsearch/v1', 
+            {
+                key: 'AIzaSyBG4Ajg_18bLW2a5Im0V8BrydLrKVCA0jE',
+                cx: '009812348751333104389:4ld9qfojt_y',
+                q: this.$inputTitle.val(),
+                searchType: 'image'
+            }, 
+            function(json, textStatus) {
+                self.$ulImageResults.empty();
+                _.each(json.items, function(image, key, list){
+                    $('<img/>',{
+                        src: image.image.thumbnailLink,
+                        class: 'imageresult',
+                        'data-link': image.link,
+                        'data-thumb': image.image.thumbnailLink
+                    }).appendTo($('<li>'))
+                    .appendTo(self.$ulImageResults);
+                });
+        });
     },
     
-    saveNewOfferParse: function(book){
-
-        // e.preventDefault();
-        var offer = new Offer();
-        offer.set('price', Number(this.$price.val()));
-        offer.set('stocks', Number(this.$stocks.val()));
-        offer.set('book', book);
-        offer.set("user", Parse.User.current());
-        offer.setACL(new Parse.ACL(Parse.User.current()));
-
-        self = this;
-        
-        offer.save(null, {success: function(offer){
-            // console.log(offer);
-            self.hide();
-            appView.admin.offerList.add(offer);
-        }, error: self.saveError});
-
-        /*Si hubieran otros tipos de oferta
-        offer.set('type', this.type);
-        offer.set('email', this.$inputEmail.val());
-        offer.set('book', book);
-        switch(this.type){
-          case 'sell':
-            offer.set('price', this.$inputPrice.val());
-            break;
-          case 'lend':
-            offer.set('time', this.$inputMaxTime.val());
-            offer.set('timeType', this.$selectTimeType.val());
-            break;
-          case 'rent':
-            offer.set('priceTime', this.$inputPriceTime.val());
-            offer.set('time', this.$inputMaxTime.val());
-            offer.set('timeType', this.$selectTimeType.val());
-            break;
-        }
-        */
-
+    selectImage:function (e) {
+        this.$ulImageResults.find('img').hide();
+        this.$ulImageResults.find(e.target).attr('src', this.$(e.target).data('link')).addClass('selected').show();
+        this.$ulImageResults.find(e.target).css("max-width", "100%");
     },
+    
 
-    renderOld: function() {
-        this.findSearch =  new SearchOrAddBooks({el:"#find>.search"});
-        this.offerSearch = new SearchOrAddBooks({el:"#offer>.search"});
-        this.$("#values > div").hide();
-        // this.$selectType= this.$('#type');
-        this.$inputPrice= this.$('input.price');
-        this.$inputMaxTime= this.$('input.max-time');
-        this.$selectTimeType= this.$('select.time-type');
-        this.$inputPriceTime= this.$('input.price-time');
-        this.$inputEmail= this.$('input.email');
-    },
     saveError: function(model, error){
-        console.log(error);
+        console.log(error)
+        appView.editImage.$footer.find('button').attr("disabled", false)
     },
+
     uploadImageBook: function(book, success){
         $.post('http://localhost/parse-services/upload-images.php',
             {   appid: appId,
