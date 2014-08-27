@@ -3,7 +3,7 @@ AdminView = Parse.View.extend({
 	el: "#admin",
 
     events: {
-        
+        "click button.upload" : "showUploadDB",
     },
 
     addBooks: new AddBooksView(),
@@ -11,6 +11,10 @@ AdminView = Parse.View.extend({
     offerList: new OfferList(),
 
 	template:_.template($("#admin-template").html()),
+
+    showUploadDB: function () {
+        appView.showUploadDB()
+    },
 
 	render: function() {
 

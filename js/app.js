@@ -127,12 +127,15 @@ AppView = Parse.View.extend({
 
 	},
 
-	// showEditBook: function(id) {
+	showUploadDB: function () {
 
-	// 	appRouter.navigate('edit/'+id);
-
-	// 	console.log('edit book: '+id);
-
-	// }
+		if ( !this.uploadDB ){
+			this.uploadDB = new UploadDBView()
+			this.$el.append(this.uploadDB.render().el)
+		}else{
+			this.uploadDB.show()
+		}
+		
+	},
 
 });

@@ -8,9 +8,27 @@ EditImageView = Parse.View.extend({
         // 'click button.eraseimage'   : 'eraseImage',
         'click img.imageresult'     : 'selectImage',
         "shown.bs.tab .nav-tabs a"  : "shownTab",
+        "change input.file"         : "filePreview",
     },
 
     template: _.template($("#edit-image-template").html()),
+
+    filePreview: function (e) {
+        
+        if (e.target.files && e.target.files[0]) {
+            
+            var reader = new FileReader()
+
+            self = this
+
+            reader.onload = function (e) {
+                self.$previewFile.attr('src', e.target.result).show()
+            }
+
+            reader.readAsDataURL(e.target.files[0])
+        }
+
+    },
 
     showTab: function (e) {
         e.preventDefault()
@@ -58,7 +76,11 @@ EditImageView = Parse.View.extend({
         this.$ulImageResults    = this.$(".result")
         this.$inputTitle        = this.$("input.search")
         this.$footer            = this.$(".modal-footer")
+        this.$inputFile         = this.$("input.file")
+        this.$previewFile       = this.$(".preview>img")
 
+        this.$inputFile.filestyle()
+        this.$previewFile.hide()
         this.$modal.modal('show')
 
         return this
@@ -66,17 +88,17 @@ EditImageView = Parse.View.extend({
 
     saveImage: function(e){
 
-        var fileUploadControl = $("#upload .file")[0]
+        var fileUploadControl = this.$imputFile[0]
 
-        self = this;
+        self = this
 
         if (this.currentTab == "#upload" &&  fileUploadControl.files.length > 0) {
             
             this.$footer.find('button').attr("disabled", true)
 
-            var file = fileUploadControl.files[0]
-            var name = "photo.jpg"
-            var picture = new Parse.File(name, file)
+            var file    = fileUploadControl.files[0]
+            var picture = new Parse.File(file.name, file)
+
             picture.save().then(function() {
                 
                 self.model.set("picture", picture)
@@ -96,6 +118,7 @@ EditImageView = Parse.View.extend({
     },
 
     searchImagesState: 0,
+    
     searchImages: function(e){
             if (this.searchImagesState == 1) {
                 clearTimeout(this.countingImages);
@@ -109,6 +132,7 @@ EditImageView = Parse.View.extend({
             },this.countUp);
             this.searchImagesState = 1;
     },
+
     startSearchImages: function () {
         self = this;
 
