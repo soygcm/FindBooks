@@ -38,21 +38,29 @@ AppView = Parse.View.extend({
 		}
 	},
 
-	showImportDB: function() {
+	showImportDB: function(data) {
 
 		appRouter.navigate('import');
 
-		this.admin.$el.hide();
+		this.admin.hide();
 
-
-		if (!this.importDB || this.importDB.$el.html() == '') {
-			this.importDB = new ImportDBView();
-			this.admin.$el.hide();
-			this.importDB.render();
-		}else{
-			this.importDB.$el.show();
+		if (this.importDB) {
+			this.importDB.remove()
 		}
+
+		this.importDB 			= new ImportDBView()
+		this.importDB.data 		= data
+		
+		this.$el.append(this.importDB.render().el)
 	},
+
+	browserSupportFileUpload: function () {
+        var isCompatible = false;
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+        isCompatible = true;
+        }
+        return isCompatible;
+    },
 
 	showLogIn: function () {
 		this.$body.removeClass(this.loggedClass);

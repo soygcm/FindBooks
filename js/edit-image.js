@@ -1,13 +1,14 @@
 EditImageView = Parse.View.extend({
     tagName: "section",
     events:{        
-        "click .save"               : 'saveImage',
-        "click .nav-tabs a"         : "showTab",
-        'keyup input.search'        : 'searchImages',
+        "click          .save"              : 'saveImage',
+        "click          .nav-tabs a"        : "showTab",
+        'keyup          input.search'       : 'searchImages',
         // 'click button.eraseimage'   : 'eraseImage',
-        'click img.imageresult'     : 'selectImage',
-        "shown.bs.tab .nav-tabs a"  : "shownTab",
-        "change input.file"         : "filePreview",
+        'click          img.imageresult'    : 'selectImage',
+        "shown.bs.tab   .nav-tabs a"        : "shownTab",
+        "show.bs.tab    .nav-tabs a"        : "onShowTab",
+        "change         input.file"         : "filePreview",
     },
 
     template: _.template($("#edit-image-template").html()),
@@ -29,9 +30,20 @@ EditImageView = Parse.View.extend({
 
     },
 
+    onShowTab: function (e) {
+        
+        var idTab       = this.$(e.target).attr('href')
+        var newHeight   = this.$(idTab).outerHeight()
+
+        this.$tabContent.animate({height: newHeight}, function () {
+            $(this).removeAttr('style');
+        })
+
+    },
+
     showTab: function (e) {
         e.preventDefault()
-        $(this).tab('show')
+        this.$(e.target).tab('show')
     },
 
     shownTab: function (e) {
@@ -61,6 +73,7 @@ EditImageView = Parse.View.extend({
         this.$footer            = this.$(".modal-footer")
         this.$inputFile         = this.$("input.file")
         this.$previewFile       = this.$(".preview>img")
+        this.$tabContent        = this.$(".tab-content")
 
         this.$inputFile.filestyle()
         this.$previewFile.hide()
