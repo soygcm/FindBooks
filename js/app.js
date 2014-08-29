@@ -14,7 +14,8 @@ AppView = Parse.View.extend({
 
 		if ( Parse.User.current() ) {
 
-			this.showAdmin();
+			this.mainnav.render().$el.show()
+			this.showAdmin()
 
     	}else{
 
@@ -26,14 +27,17 @@ AppView = Parse.View.extend({
 
 	showAdmin: function () {
 
+		// if (this.admin) {
+		// 	this.admin.remove()
+		// }
+
 		if ( Parse.User.current() ) {
 
-			this.mainnav.render().$el.show();
-			this.$body.addClass(this.loggedClass);
+			this.$body.addClass(this.loggedClass)
 
-			this.login.$el.html('');
+			this.login.$el.html('')
 
-			this.admin.render();
+			this.admin.render().$el.show()
 
 		}
 	},
@@ -50,7 +54,7 @@ AppView = Parse.View.extend({
 
 		this.importDB 			= new ImportDBView()
 		this.importDB.data 		= data
-		
+
 		this.$el.append(this.importDB.render().el)
 	},
 
