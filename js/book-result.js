@@ -11,11 +11,12 @@ BookResult = Parse.View.extend({
         var modelJson = this.model.toJSON();
         modelJson.authors = modelJson.authors || [];
         modelJson.thumbnails = modelJson.thumbnails || [];
+        modelJson.subtitle = modelJson.subtitle || "";
         modelJson.authors = modelJson.authors.join(", ");
         this.$el.html(this.template(modelJson));
-        if(typeof(modelJson.objectId) != 'undefined'){
-            this.$el.css('background-color', 'tomato');
-        }
+        // if(typeof(modelJson.objectId) != 'undefined'){
+        //     this.$el.css('background-color', 'tomato');
+        // }
         return this;
     },
     setBookResult: function(){

@@ -15,12 +15,12 @@ AddBooksView = Parse.View.extend({
     template:_.template($("#add-book-template").html()),
 
     logKey: function(e) {
-        // console.log(e.keyCode);
-        if (this.$inputSearch.val() != "" && this.$inputSearch.val() != this.bookCollection.query) {
+        // console.log(e.keyCode, this.query);
+        if (this.$inputSearch.val() != "" && this.$inputSearch.val() != this.query) {
             if (this.searchState == 1) {
                 clearTimeout(this.counting);
             }
-            // console.log('iniciando conteo hasta '+this.countUp);
+            console.log('iniciando conteo hasta '+this.countUp);
             self = this;
             this.counting = setTimeout(function(){
                 console.log('buscando...')
@@ -43,7 +43,10 @@ AddBooksView = Parse.View.extend({
             e.preventDefault();
         }
         self = this;
-        if (e || this.$inputSearch.val() != "" && this.$inputSearch.val() != this.bookCollection.query) {
+        if (e || this.$inputSearch.val() != "" && this.$inputSearch.val() != this.query) {
+            
+            //Busqueda con el modelo local
+            /*
             this.bookCollection.query = this.$inputSearch.val();
             this.bookCollection.fetch({
                 success:function(collection){
@@ -59,12 +62,45 @@ AddBooksView = Parse.View.extend({
                     });
                 }
             });
+            */
+
+            //Busqueda con el modelo en la nube
+            // console.log("Iniciar Busqueda")
+            this.query = this.$inputSearch.val()
+            Parse.Cloud.run('search', { query: this.query }, {
+                success: function(collection) {
+                    console.log("Busqueda Terminada")
+
+                    self.printResult(collection)
+                },
+                error: function(error) {
+                    console.log(error)
+                }
+            })
+
         }
         else if(this.$inputSearch.val() == ""){
             this.$results.modal('hide');
             this.$el.css('z-index', 20);
         }
     },
+
+    printResult: function (collection) {
+
+        var self = this
+        
+        this.$results.empty()
+        this.$results.modal('show')
+        appView.$body.removeClass('modal-open')
+        this.$el.css('z-index', 6000)
+
+        _.each(collection.models, function(book, i) {
+            self.addOneResult(book)
+        });
+
+
+    },
+
     addOneResult: function(book){
         console.log(book.get('title'));
         var bookResult = new BookResult({model: book, parent: this});
