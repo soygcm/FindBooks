@@ -35,7 +35,9 @@ AddBooksView = Parse.View.extend({
     },
 
     addBook: function(){
-        console.log('addbook');
+
+        appView.showNewBook(null);
+        
     },
 
     startSearch: function(e){

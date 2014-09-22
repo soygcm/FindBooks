@@ -18,7 +18,7 @@ EditBookView = Parse.View.extend({
         console.log(idParent);
 
         if (!this.bookEdited && idParent == 'book-form') {
-            this.bookEdited == true;
+            this.bookEdited = true;
         }
         else if (!this.offerEdited && idParent == 'offer-form') {
             this.offerEdited = true;
@@ -71,13 +71,18 @@ EditBookView = Parse.View.extend({
         }
 
         var datos =  {
-            'book'  :  bookJson,
+            'book'  : bookJson,
             'offer' : offerJson
         };
 
         this.$el.html(this.template(datos));
 
         this.$modal = this.$(".modal");
+
+        this.$title = this.$("input.title")
+        this.$subtitle = this.$("input.subtitle")
+        this.$authors = this.$("input.authors")
+        // this.$subtitle = this.$("input.stocks")
 
         this.$price = this.$("input.price");
         this.$stocks = this.$("input.stocks");
@@ -93,27 +98,72 @@ EditBookView = Parse.View.extend({
     saveOffer: function(e){
 
 
-        // Es una oferta nueva: se crea un libro y se agrega a una oferta.
+        self = this;
 
-        if (this.book) {
+
+        // (1) Agregar un libro nuevo y por ende (1.1) una oferta
+        //      (1.2) Agregar una nueva oferta a partir de un libro existente
+        // (2) Editar un libro y actualizar la tabla
+        // (3) Editar una oferta y actualizar la tabla
+        // 
+
+        // (1.2) Es una oferta nueva: se crea un libro y se agrega a una oferta.
+        if (this.book && !this.model) {
 
             e.preventDefault();
             this.$('button').attr("disabled", true);
             // book = this.offerSearch.selectedResult || this.offerSearch.createBook();
-            self = this;
+
             console.log(this.book);
 
             this.book.save(null, {success: self.saveBookSuccess, error: self.saveError});
+        }else{
+
+            // (2) Editar el libro / (1) Crear nuevo libro
+            if(this.bookEdited){
+                
+                if (this.model) {
+                    this.book = this.model.get("book") // (2)
+                }else{
+                    this.book = new Book() // (1) si no hay oferta, se crea un nuevo libro
+                }
+
+                this.book.set('title', this.$title.val()  )
+                this.book.set('subtitle', this.$subtitle.val()  )
+                this.book.set('authors', this.$authors.val().split(",") )
+
+                this.book.save().then(function (book){
+
+                    if (!self.model){ // (1.1) si no hay oferta se crea una nueva
+
+                        self.saveBookSuccess(book)
+
+                    }else{ // (2) si hay modelo entonces actualizar la tabla
+
+                        self.hide();
+
+                        if (self.callerView) {
+                            self.callerView.render();
+                            appView.admin.updateDataRow( self.callerView.$el );
+                        }
+
+                    }
+
+                }, self.saveError)
+
+
+            }
+
+            // Editar oferta (3)
+            if(this.offerEdited){
+
+                this.updateOffer()
+
+            }
+
         }
 
-        // Solo hay que actualizar la oferta
-        else if(this.offerEdited && !this.bookEdited){
 
-            this.updateOffer();
-
-        }
-
-        // Hay que crear un nuevo libro
     },
 
     saveBookSuccess: function(book){

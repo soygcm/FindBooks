@@ -1,0 +1,67 @@
+
+{"Book": {
+  
+	"idGoogle": string,
+
+
+	"title": string,
+	"subtitle": string,
+
+	"authors": [
+	  relation
+	],
+
+	"publisher": string,
+
+	"publishedDate": date,
+
+	"description": string,
+
+	"industryIdentifiers": [
+	  {
+	    "type": string, // ISBN_10, ISBN 13, ISSN, OTHER
+	    "identifier": string 
+	  }
+	],
+
+	"pageCount": integer,
+
+	"dimensions": {
+	  "height": string,
+	  "width": string,
+	  "thickness": string
+	},
+
+	"bookbinding": string, //hardcover, paperback
+
+	"mainCategory": pointer,
+	"categories": [
+	  relation
+	],
+
+	"verageRating": double,
+	"ratingsCount": integer,
+
+	// "contentVersion": string,
+
+	"imageLinks": {
+	  "smallThumbnail": string,
+	  "thumbnail": string,
+	  "small": string,
+	  "medium": string,
+	  "large": string,
+	  "extraLarge": string
+	},
+
+	"imageThumbnail" : image,   // medium icon: backgrounds
+	"image" : image,			// original: 
+	"imageMedium" : image,		// large: show big
+
+	"language": string,
+},
+"Author" : {
+	"name" : string
+},
+"Category" : {
+	"name" : string
+}}

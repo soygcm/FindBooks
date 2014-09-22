@@ -14,9 +14,9 @@ BookResult = Parse.View.extend({
         modelJson.subtitle = modelJson.subtitle || "";
         modelJson.authors = modelJson.authors.join(", ");
         this.$el.html(this.template(modelJson));
-        // if(typeof(modelJson.objectId) != 'undefined'){
-        //     this.$el.css('background-color', 'tomato');
-        // }
+        if(typeof(modelJson.idGBook) != 'undefined'){
+            this.$el.css('background-color', 'tomato');
+        }
         return this;
     },
     setBookResult: function(){
