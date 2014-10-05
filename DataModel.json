@@ -1,64 +1,67 @@
 
 {"Book": {
-  
-	"idGoogle": string,
+	"id" : string, 				// *SE_id id de Parse.com
+	// campos desde Google Books: 
+	"idGBook": string,			 
+	"title": string,			// *NV *SE 
+	"subtitle": string,			// *NV *SE
+	"authors": [relation],		// *NV *SE
+	"publisher": string,		// *NV *SE
+	"publishedDate" : date,		// *NV *SE
+	"publishedDate" : string,	// 
+	"description": string,		// *NV *SE
+	"industryIdentifiers": [{ 	// *NV *SE
+		"type": string, 			// ISBN_10, ISBN 13, ISSN, OTHER
+	    "identifier": string  
+	}],
+	"pageCount": integer,		// 
+	"dimensions": {				// 
+		"height": string, 		//
+	 	"width": string, 			//
+	 	"thickness": string 		//
+	}, 
+	"mainCategory": pointer,	// *SE
+	"categories": [relation],	// *SE ¿son como tags?
+	"verageRating": double,		// *SE
+	"ratingsCount": integer,	// *SE
+	"imageLinks": {				// *NV 
+		"smallThumbnail": string, 
+		"thumbnail": string, 
+		"small": string, 
+		"medium": string, 
+		"large": string, 
+		"extraLarge": string 
+	}, 
+	"language": string,			// *SE 
+	// campos: 
+	"imageThumbnail" : image,   // *NV medium icon: fondos en el libro desenfocado
+	"image" : image,			// *NV original: 
+	"imageMedium" : image,		// *NV large: mostrar imagen grande
+	"bookbinding": string, 		// *SE hardcover, paperback
+	// campos de control 
+	"version" : boolean,		//  numero de version actual 
+	"current" : pointer,		//  version actual
+	"newVersion" : boolean,		//  crear una nueva version (solo ParseCloud) 
+	"noVersion" : boolean,		//  no crear nueva version, solo actualizar los datos
+	"newSearchData" : boolean,	//  datos de busqueda actualizados (solo ParseCloud, para Swiftype)
+	"dirty" : [{				//  que campos acaban de modificarse
+		"field" : string,
+		"dirty" : boolean
+	}]
+	/* 
+	NV: NewVersion 
+	SE: SearchEngine
+	
 
 
-	"title": string,
-	"subtitle": string,
-
-	"authors": [
-	  relation
-	],
-
-	"publisher": string,
-
-	"publishedDate": date,
-
-	"description": string,
-
-	"industryIdentifiers": [
-	  {
-	    "type": string, // ISBN_10, ISBN 13, ISSN, OTHER
-	    "identifier": string 
-	  }
-	],
-
-	"pageCount": integer,
-
-	"dimensions": {
-	  "height": string,
-	  "width": string,
-	  "thickness": string
-	},
-
-	"bookbinding": string, //hardcover, paperback
-
-	"mainCategory": pointer,
-	"categories": [
-	  relation
-	],
-
-	"verageRating": double,
-	"ratingsCount": integer,
-
-	// "contentVersion": string,
-
-	"imageLinks": {
-	  "smallThumbnail": string,
-	  "thumbnail": string,
-	  "small": string,
-	  "medium": string,
-	  "large": string,
-	  "extraLarge": string
-	},
-
-	"imageThumbnail" : image,   // medium icon: backgrounds
-	"image" : image,			// original: 
-	"imageMedium" : image,		// large: show big
-
-	"language": string,
+	*/
+}, 
+"Offer" : { 
+	"price" : double,			//  precio de una oferta
+	"stock" : integer,			// 
+	""
 },
+// pendientes por crear
 "Author" : {
 	"name" : string
 },
