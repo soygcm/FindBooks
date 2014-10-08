@@ -83,7 +83,7 @@ BookTr = Parse.View.extend({
         var offerJson = this.model.toJSON();
         var bookJson = this.model.get('book').toJSON();
 
-        bookJson.thumbnails = bookJson.thumbnails || [];
+        bookJson.imageLinks = bookJson.imageLinks || [];
 
         if (bookJson.authors) {
             bookJson.authors = bookJson.authors.join(", ");

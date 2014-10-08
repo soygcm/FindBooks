@@ -230,7 +230,7 @@
 <script type="text/template" id="book-result-template" >
     <!-- <li class="list-group-item"> -->
 
-          <img src='<%= thumbnails.thumbnail %>' alt=""  class="pull-left" width="30" height="40">
+          <img src='<%= imageLinks.thumbnail %>' alt=""  class="pull-left" width="30" height="40">
 
           <div class="media-body">
               <h3><%= title %> 
@@ -357,7 +357,7 @@
 
           <td class="row "><div class="animate media" >
               <div class="pull-left" >
-                  <img src="<%= book.thumbnails.smallThumbnail %>" width="30" height="40" class="media-object clickable" >
+                  <img src="<%= book.imageLinks.smallThumbnail %>" width="30" height="40" class="media-object clickable" >
               </div>
               <div class="media-body">
                 <h3 class="media-heading"><%= book.title %><small> <%=book.subtitle %> 
@@ -516,14 +516,6 @@
 
 </script>
 
-
-<script type="text/template" id="book-result-template">
-    <a>
-      <img src='<%= thumbnails.smallThumbnail %>' alt="" width="30" height="40" >
-      <h3><%= title %></h3>
-      <h4><%= authors %></h4>
-    </a>
-</script>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>

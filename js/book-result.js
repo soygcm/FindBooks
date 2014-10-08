@@ -10,8 +10,9 @@ BookResult = Parse.View.extend({
     render: function() {
         var modelJson = this.model.toJSON();
         modelJson.authors = modelJson.authors || [];
-        modelJson.thumbnails = modelJson.thumbnails || [];
+        modelJson.imageLinks = modelJson.imageLinks || [];
         modelJson.subtitle = modelJson.subtitle || "";
+        modelJson.title = modelJson.title || "";
         modelJson.authors = modelJson.authors.join(", ");
         this.$el.html(this.template(modelJson));
         if(typeof(modelJson.idGBook) != 'undefined'){
