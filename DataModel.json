@@ -25,8 +25,8 @@
 	"verageRating": double,		// *SE
 	"ratingsCount": integer,	// *SE
 	"imageLinks": {				// *NV 
-		"smallThumbnail": string, 
-		"thumbnail": string, 
+		"smallThumbnail": string,  // Disponible
+		"thumbnail": string, 		// Disponible
 		"small": string, 
 		"medium": string, 
 		"large": string, 
@@ -34,6 +34,7 @@
 	}, 
 	"language": string,			// *SE 
 	// campos: 
+	// Las imagenes que rollo se autogeneran o que?? Y se desenfocan??
 	"imageThumbnail" : image,   // *NV medium icon: fondos en el libro desenfocado
 	"image" : image,			// *NV original: 
 	"imageMedium" : image,		// *NV large: mostrar imagen grande
@@ -44,22 +45,50 @@
 	"newVersion" : boolean,		//  crear una nueva version (solo ParseCloud) 
 	"noVersion" : boolean,		//  no crear nueva version, solo actualizar los datos
 	"newSearchData" : boolean,	//  datos de busqueda actualizados (solo ParseCloud, para Swiftype)
-	"dirty" : [{				//  que campos acaban de modificarse
+	"dirty" : [{				//  que campos acaban de modificarse. Creo que esto no se usa
 		"field" : string,
 		"dirty" : boolean
-	}]
+	}],
+
+
+	"offersPrices" : [{				
+		"price" : double,
+		"currency" : string
+	}],
+	"offersCount" : int,
+	"offersCondition" : [string], //// AS_NEW, USED, NEW, POOR...
 	/* 
 	NV: NewVersion 
 	SE: SearchEngine
 	
-
+	
 
 	*/
 }, 
-"Offer" : { 
+"MyBook" : { 
+
+	//******* Offer *********
 	"price" : double,			//  precio de una oferta
 	"stock" : integer,			// 
-	""
+	"condition" : string, 		// AS_NEW, USED, NEW, POOR... http://en.wikipedia.org/wiki/List_of_used_book_conditions
+	"bookbinding": string, 		// *SE hardcover, paperback
+	"currency" : string,			// code of currency 
+	"comment" : string,
+
+	//****** Want **********
+	"" : ,
+
+	//******* generic *********
+	"book" : pointer,
+	"user" : pointer,
+	"type" : string, // OFFER, WANT, HAVE,  digital, estoy leyendo, lo vendo, etc, etc.
+
+	"transactionCount" : integer, //todas las transacciones activas, aceptadas o no
+},
+"Transaction" : {
+	"bookOffer" : pointer,
+	"bookWant" : pointer,
+	"accepted" : boolean
 },
 // pendientes por crear
 "Author" : {
@@ -68,3 +97,22 @@
 "Category" : {
 	"name" : string
 }}
+
+
+Vender
+======
+
+Precio:
+Moneda:
+
+Prestar
+=======
+
+Tiempo máximo:
+
+Regalar
+=======
+
+Agradecer...
+
+
