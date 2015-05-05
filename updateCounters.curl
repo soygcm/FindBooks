@@ -1,0 +1,13 @@
+curl -X POST \
+  -H "X-Parse-Application-Id: C4zgFUST9RGWSJ5scVpyB5G4co2gcMUpNPg0QpaI" \
+  -H "X-Parse-REST-API-Key: pYnV60HdDrE8moVcRWnob0RBPzgllsOzDbspc5HU" \
+  -H "Content-Type: application/json" \
+  -d '{ "myBookId":  "7t3Y1YVzUD" }' \
+  https://api.parse.com/1/functions/updateMyBookCounters
+
+curl -X POST \
+  -H "X-Parse-Application-Id: C4zgFUST9RGWSJ5scVpyB5G4co2gcMUpNPg0QpaI" \
+  -H "X-Parse-REST-API-Key: pYnV60HdDrE8moVcRWnob0RBPzgllsOzDbspc5HU" \
+  -H "Content-Type: application/json" \
+  -d '{ "id":  "Wi86iadzn5", "type" : "OFFER" }' \
+  https://api.parse.com/1/functions/updateBookCounters

@@ -1,0 +1,793 @@
+@import url(http://weloveiconfonts.com/api/?family=entypo|fontawesome|iconicstroke|maki);
+/* entypo */
+[class*="entypo-"]:before {
+  font-family: 'entypo', sans-serif;
+}
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+/* iconicstroke */
+[class*="iconicstroke-"]:before {
+  font-family: 'IconicStroke', sans-serif;
+}
+/* maki */
+[class*="maki-"]:before {
+  font-family: 'maki', sans-serif;
+}
+html, body {
+  background-color:#F7F2DF;
+  margin: 0px;
+  color: #444;
+  font-family: 'lato';
+  width: 100%;
+  overflow-x: hidden;
+}
+a {
+   text-decoration: none;
+}
+a:visited {
+    color: #66008DA3;
+}
+
+/*background video*/
+video {
+position: fixed;
+right: 0;
+bottom: 0;
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
+z-index: -1;
+background-size: cover;
+  opacity: 1;
+    filter: alpha(opacity=50);
+}
+/*background video ends*/
+.banner {
+  color:#542200;
+  margin-top: 0px;
+  padding-top: 0px;
+  text-align:center;
+  width: 100%;
+  height: 420px;
+}
+.banner h1 {
+  padding:2em;
+  font-size: 4em; 
+}
+
+/* Inicia el Nav*/
+nav{
+  height:250px;
+  width:100%;
+}
+/*Finaliza el Nav*/
+
+/*Text img  landing*/
+.findbooks .text{
+  display: inline-block;
+  position: absolute;
+  padding-left:50%;
+  padding-right:3em;
+  margin-top: 3em;
+  margin: 0 auto;
+  
+}
+.findbooks p{
+  color: #A17035;
+  font-size:1.5em;
+  margin-top: 3em;
+  
+}
+.findbooks img{
+  width:20%;
+  margin-top:3em;
+  padding-left:0px;
+  position: absolute ;
+  text-align:center;
+ }
+
+/*Video Bienvenida y explicacion */
+.wrap-video {
+  width: 100%;
+  height: 140px;
+  padding-top: 42px;
+  margin: 0px;
+  background: url("http://i.imgur.com/un7YBRp.png") no-repeat top center;
+  background-image: url(http://i.imgur.com/un7YBRp.png);
+  background-position-x: 50%;
+  background-position-y: 0%;
+  background-size: initial;
+  background-repeat-x: no-repeat;
+  background-repeat-y: no-repeat;
+  background-attachment: initial;
+  background-origin: initial;
+  background-clip: initial;
+  background-color: initial;
+  box-shadow:10px 10px 30px 20px black inset;
+}
+.wrap-video a {
+  cursor: pointer;
+  margin: 0px auto;
+  display: block;
+  width: 102px;
+  height: 102px;
+  background: url("http://i.imgur.com/macTgSd.png") no-repeat;
+}
+/*finaliza Bienvenida y explicacion*/
+
+/*offer section banner img*/
+.offer {
+  position: relative;
+  background: #333 url(https://farm9.staticflickr.com/8032/7913863272_73c41aa028_b.jpg)no-repeat center fixed;
+  width: 100%;
+  height: 420px;
+  margin: 0px;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.offer h1{
+  color:#fff;
+  font-size: 4em;
+  margin-top: 0em;
+  padding-top:2em;
+  text-align:center;
+}
+/*offer section banner img ends*/
+
+/*sell or donate section*/
+.stepsell {
+  background-color:#fff;
+  width:100%;
+  height:610px;
+  padding:12%;
+  top:0;
+}
+.stepsell li{
+  width:150px;
+  height:150px;
+  list-style: none;
+  display: inline-block;
+  vertical-align:top;
+  margin-top:0px;
+  margin: 5em;
+
+   -webkit-border-radius: 100%; 
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+  background-color: #DB67C8;
+}
+.stepsell li .icon{
+  font-size: 5em;
+  padding-top:0.33em;
+  text-align:center;
+  color:#fff;
+}
+.stepsell .text{
+  padding-top:25px;
+}
+.stepsell h1{
+    text-align:center;
+}
+.stepsell .text p{
+  text-align: left;
+}
+/*sell or donate section ends*/
+
+
+/*find books section*/
+.find {
+  position: relative;
+  background: url(https://farm4.staticflickr.com/3798/13069885703_8a180fc88a_b.jpg)no-repeat center fixed;
+  width: 100%;
+  height: 420px;
+  margin: 0px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.find h1{
+  color:#fff;
+  font-size: 4em;
+  margin-top: 0em;
+  padding-top:2em;
+  text-align:center;
+}
+/*termina find books section*/
+
+/*buy or get books section*/
+.stepbuy {
+  background-color:#fff;
+  width:100%;
+  height:610px;
+  padding:12%;
+  top:0;
+}
+.stepbuy li{
+  width:150px;
+  height:150px;
+  background-color:#00CCAA;
+  list-style: none;
+  display: inline-block;
+  vertical-align:top;
+  margin-top:0px;
+  margin: 5em;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+}
+.stepbuy li .icon{
+  font-size: 5em;
+  padding-top:0.33em;
+  text-align:center;
+  color:#fff;
+}
+.stepbuy .text{
+  padding-top:25px;
+}
+.stepbuy h1{
+    text-align:center;
+}
+.stepbuy .text p{
+  text-align: left;
+}
+/*buy or get section ends*/
+
+/*our team section*/
+.team {
+  position: relative;
+  background: #333 url(http://i.imgur.com/r3x3Ytx.jpg)no-repeat center fixed;
+  width: 100%;
+  height: 420px;
+  margin: 0px;
+    -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.team h1{
+  color:#fff;
+  font-size: 4em;
+  margin-top: 0em;
+  padding-top:2em;
+  text-align:center;
+}
+.team h3{
+  color:#fff;
+  text-align:center;
+  margin-top:0px;
+  padding:0px;
+}
+.weare {
+  background-color:#fff;
+  width:100%;
+  height:410px;
+  padding:12%;
+  top:0;
+}
+.weare li{
+  width:150px;
+  height:150px;
+  list-style: none;
+  display: inline-block;
+  vertical-align:top;
+  margin-top:0px;
+  margin: 5em;
+   -webkit-border-radius: 100%; 
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+  background-color:#FF9800;
+}
+.gabo{
+    background: url(https://lh3.googleusercontent.com/-CQFLP2mlZZg/AAAAAAAAAAI/AAAAAAAAAAA/2ft-kE_ygUU/s128-c-k/photo.jpg)no-repeat;
+  width:150px;
+  height:150px;
+   -webkit-border-radius: 150px; 
+    -moz-border-radius: 150px;
+    border-radius: 150px;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.daniel{
+    background: url(https://lh6.googleusercontent.com/-P5tIHQwyJHo/AAAAAAAAAAI/AAAAAAAAAAA/B_kGnE6bg8M/s128-c-k/photo.jpg)no-repeat;
+  width:150px;
+  height:150px;
+   -webkit-border-radius: 150px; 
+    -moz-border-radius: 150px;
+    border-radius: 150px;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.andres{
+    background: url(http://3.bp.blogspot.com/-OGeGUh9d_QQ/VAtbQlHUQcI/AAAAAAAACno/SypB7yqmm5A/s1600/149082_10200507456582258_1243453631_n.jpg)no-repeat center;
+  width:150px;
+  height:150px;
+   -webkit-border-radius: 150px; 
+    -moz-border-radius: 150px;
+    border-radius: 150px;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.weare .text{
+  padding-top:25px;
+}
+.weare h1{
+  text-align:center;
+}
+.weare .text p{
+  text-align: left;
+}
+/*our team section ends*/
+
+
+/*Phone Nexus css*/
+.main {
+	margin-left: 15%;
+  margin-top:-2%;
+  margin-bottom:15%;
+  z-index:1;
+}
+.phone {
+	background-color: #000;
+  margin-top: -5em;
+	height: 550px;
+	width: 280px;
+	border-top-left-radius: 140px 25px;
+	border-top-right-radius: 140px 25px;
+	border-bottom-left-radius: 140px 25px;
+	border-bottom-right-radius: 140px 25px;
+}
+.fcamera {
+	position: absolute;
+	background-color: #212122;
+	height: 10px;
+	width: 10px;
+	border-radius: 10px;
+	margin-top: 25px;
+	margin-left: 35px;
+}
+.clens {
+	position: absolute;
+	background-color: #0F0F0F;
+	height: 5px;
+	width: 5px;
+	border-radius: 5px;
+	margin-top: 27px;
+	margin-left: 38px
+}
+.speaker {
+	position: absolute;
+	background-color: #171717;
+	height: 15px;
+	width: 15px;
+	border-radius: 10px;
+	margin-top: 22px;
+	margin-left: 130px;
+}
+.screen {
+	background-color: #212122;
+	position: absolute;
+	height: 450px;
+	width: 260px;
+	margin-left: 10px;
+	margin-top: 50px;
+	background-image: url("http://i.imgur.com/kFUZi4W.gif");
+	background-size: 260px 450px;
+}
+.lock_btn {
+	background-color: #080808;
+	position: absolute;
+	height: 35px;
+	width: 3px;
+	margin-left: 280px;
+	margin-top: 75px;
+	border-top-right-radius: 3px 3px;
+	border-bottom-right-radius: 3px 3px;
+}
+.volume_btn {
+	background-color: #080808;
+	position: absolute;
+	height: 75px;
+	width: 3px;
+	margin-top: 100px;
+	margin-left: -3px;
+	border-top-left-radius: 3px 3px;
+	border-bottom-left-radius: 3px 3px;
+}
+/*End phone css*/
+
+/*contact footer*/
+.contact {
+  background-color:#FFECB3;
+  color:#00CCAA;
+  width:100%;
+  height:210px;
+  padding:1%;
+  top:0;
+}
+.contact ul li{
+  margin:20px;
+  list-style: none;
+  display: inline-block;
+}
+.contact .icon{
+  font-size: 1.33em;
+  padding-top:0.3em;
+  color: #fff;
+}
+.contact .face{
+  background-color: #1976D2;
+   width:40px;
+  height:40px;
+  display: inline-block;
+  text-align:center;
+  -webkit-border-radius: 40px; 
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+}
+.contact .face:hover{
+  background-color: #2196F3;
+}
+.contact .twit{
+  background-color: #03A9F4;
+  width:40px;
+  height:40px;
+  display: inline-block;
+  text-align:center;
+  -webkit-border-radius: 40px; 
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+}
+.contact .tumb{
+  background-color: #536DFE;
+  width:40px;
+  height:40px;
+  display: inline-block;
+  text-align:center;
+  -webkit-border-radius: 40px; 
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+}
+.contact .yout{
+  background-color: #D32F2F;
+  width:40px;
+  height:40px;
+  display: inline-block;
+  text-align:center;
+  -webkit-border-radius: 40px; 
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+}
+.contact .gplus{
+  background-color: #C2185B;
+  width:40px;
+  height:40px;
+  display: inline-block;
+  text-align:center;
+  -webkit-border-radius: 40px; 
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+}
+.contact .mail{
+  background-color: #DB67C8;
+  width:40px;
+  height:40px;
+  display: inline-block;
+  text-align:center;
+  -webkit-border-radius: 40px; 
+  -moz-border-radius: 40px;
+  border-radius: 40px;
+}
+
+/* Mobile 995 screen*/
+@media only screen and (max-width: 995px), only screen and (max-device-width: 995px) {
+  /*offer tablet view*/
+.stepsell {
+  height:410px;
+  margin:0px;
+  padding:0em;
+   padding-left:0px;
+  padding-right:0px;
+  display: inline-block;
+}
+.stepsell li{
+  width:90px;
+  height:90px;
+  margin-top:0px;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  background-color: #DB67C8;
+}
+.stepsell li .icon{
+  font-size: 3em;
+}
+.stepsell .text{
+  padding-top:1px;
+}
+.stepsell h1{
+    text-align:center;
+}
+.stepsell .text p{
+  text-align: left;
+}
+  /*find tablet view */
+.stepbuy {
+  height:390px;
+  margin:0px;
+  padding:0em;
+  padding-left:0px;
+  padding-right:0px;
+  display: inline-block;
+}
+.stepbuy li{
+  width:90px;
+  height:90px;
+  margin-top:0px;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  background-color: #00CCAA;
+}
+.stepbuy li .icon{
+  font-size: 3em;
+}
+.stepbuy .text{
+  padding-top:1px;
+}
+.stepbuy h1{
+    text-align:center;
+}
+.stepbuy .text p{
+  text-align: left;
+}
+
+  /*team tablet view*/
+.team h3{
+  color:#fff;
+  text-align:center;
+  margin-top:-2em;
+  padding:0px;
+}
+.weare {
+  padding:1%;
+}
+.weare li{
+  width:90px;
+  height:90px;
+  margin-top:0px;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+}
+.gabo{
+    background: url(https://lh3.googleusercontent.com/-CQFLP2mlZZg/AAAAAAAAAAI/AAAAAAAAAAA/2ft-kE_ygUU/s128-c-k/photo.jpg)no-repeat;
+  width:90px;
+  height:90px;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.daniel{
+    background: url(https://lh6.googleusercontent.com/-P5tIHQwyJHo/AAAAAAAAAAI/AAAAAAAAAAA/B_kGnE6bg8M/s128-c-k/photo.jpg)no-repeat;
+  width:90px;
+  height:90px;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.andres{
+    background: url(http://3.bp.blogspot.com/-OGeGUh9d_QQ/VAtbQlHUQcI/AAAAAAAACno/SypB7yqmm5A/s1600/149082_10200507456582258_1243453631_n.jpg)no-repeat center;
+  width:90px;
+  height:90px;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.weare .text{
+  padding-top:25px;
+}
+.weare h1{
+  text-align:center;
+}
+.weare .text p{
+  text-align: left;
+}
+}
+/* Mobile 995 screen termina*/
+
+/* Mobile 600 screen*/
+@media only screen and (max-width: 320px), only screen and (max-device-width: 320px) {
+
+body{
+  margin:0px;
+  padding:0px;
+}
+  .main{
+    padding:0px;
+    margin:0px;
+  }
+nav{
+  height:42px;
+  padding:100px;
+}
+.banner{
+  height:450px;
+}
+.banner h1 {
+  margin-top:0px;
+  padding:0px;
+  font-size: 3em;
+}
+.findbooks{
+    height:1024px;
+  }
+.findbooks .text{
+  display: inline-block;
+  position: relative;
+  margin: 0 auto;
+  margin-left:-33%;
+  text-align:left;
+}
+.findbooks p{
+  color: #A17035;
+  font-size:1.5em;
+  margin-top: -5em;
+  margin-bottom:5em;
+}
+.findbooks img{
+  margin-top:140%;
+  display: block;
+  width:50%;
+  text-align:center;
+ }
+  /*offer phone view*/
+  .offer{
+    height:550px;
+  }
+.stepsell {
+  height:710px;
+  padding:-0em;
+  padding-left:0px;
+  padding-right:0px;
+  
+}
+.stepsell li{
+  display: inline;
+  margin:0px;
+  
+}
+ .stepsell .icon{
+  width:60px;
+  height:45px;
+  margin-top:0px;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  background-color: #DB67C8;
+ }
+.stepsell h1{
+  font-size:1.3em;
+  margin-top:1.3em;
+  text-align:left;
+}
+  /*find phone view */
+  .find{
+    height:650px;
+  }
+  
+.stepbuy {
+  height:710px;
+  padding:-0em;
+  padding-left:0px;
+  padding-right:0px;
+  
+}
+.stepbuy li{
+  display: inline;
+  margin:0px;
+  
+}
+ .stepbuy .icon{
+  width:60px;
+  height:45px;
+  margin-top:0px;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  background-color: #DB67C8;
+ }
+.stepbuy h1{
+  font-size:1.3em;
+  margin-top:1.3em;
+  text-align:left;
+}
+  /*team phone view*/
+  .team{
+    height:750px;
+  }
+.weare {
+  height:810px;
+  padding-left:0px;
+  padding-right:0px;
+}
+.weare li{
+  display: inline;
+  margin:0px;
+  text-align:center;
+}
+.gabo{
+    background: url(https://lh3.googleusercontent.com/-CQFLP2mlZZg/AAAAAAAAAAI/AAAAAAAAAAA/2ft-kE_ygUU/s128-c-k/photo.jpg)no-repeat;
+  width:90px;
+  height:90px;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  
+}
+.daniel{
+    background: url(https://lh6.googleusercontent.com/-P5tIHQwyJHo/AAAAAAAAAAI/AAAAAAAAAAA/B_kGnE6bg8M/s128-c-k/photo.jpg)no-repeat;
+  width:90px;
+  height:90px;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.andres{
+    background: url(http://3.bp.blogspot.com/-OGeGUh9d_QQ/VAtbQlHUQcI/AAAAAAAACno/SypB7yqmm5A/s1600/149082_10200507456582258_1243453631_n.jpg)no-repeat center;
+  width:90px;
+  height:90px;
+  -webkit-border-radius: 100%; 
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.weare h1{
+  font-size:1.5em;
+  margin-top:0em;
+  text-align:left;
+}
+  .contact {
+  background-color:#FFECB3;
+  color:#00CCAA;
+  width:100%;
+  height:280px;
+  padding:1%;
+  top:0;
+}
+  
+}
